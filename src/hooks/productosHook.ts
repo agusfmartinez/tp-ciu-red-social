@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+/*import { useState, useEffect } from 'react';
 
 export function useProductos() {
 
@@ -22,4 +22,4 @@ export function useProductos() {
     return productos;
 }
 
-export default useProductos;
+export default useProductos;*/

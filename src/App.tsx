@@ -1,93 +1,19 @@
-/* Componente principal de la app */
-import { Routes, Route } from "react-router";
+import { Route, Routes } from "react-router";
 import Header from "./components/Header";
-import Inicio from "./pages/Inicio";
-import Carrito from "./pages/Carrito";
-import Nosotros from "./pages/Nosotros";
-import Productos from "./pages/Productos";
-import FormularioCompra from "./pages/FormularioCompra";
 import Footer from "./components/Footer";
-import DetalleProducto from "./pages/DetalleProducto";
+import Inicio from "./pages/Inicio";
+import Nosotros from "./pages/Nosotros";
 import Contacto from "./pages/Contacto";
-import { useCarrito } from "./hooks/carritoHook";
-import ToastGeneral from "./components/Toast";
 
 function App() {
-  // Este seria el carrito que se crea solo una vez
-  const {
-    carrito,
-    agregarAlCarrito,
-    aumentarCantidad,
-    disminuirCantidad,
-    eliminarProducto,
-    vaciarCarrito,
-    total,
-    cantidadTotal,
-    toast,
-    cerrarToast,
-    mostrarToast,
-  } = useCarrito();
-
   return (
     <>
-      <Header cantidadTotal={cantidadTotal} />
-      <ToastGeneral
-        show={!!toast}
-        titulo={toast?.titulo}
-        mensaje={toast?.mensaje}
-        tipo={toast?.tipo}
-        onClose={cerrarToast}
-        delay={toast?.delay}
-      />
+      <Header />
       <main>
         <Routes>
-          <Route
-            path="/"
-            element={<Inicio agregarAlCarrito={agregarAlCarrito} carrito={carrito}/>}
-          />
-
-          <Route
-            path="/productos"
-            element={<Productos
-               agregarAlCarrito={agregarAlCarrito} 
-               carrito={carrito}/>}
-          />
-
-          <Route
-            path="/carrito"
-            element={
-              <Carrito
-                carrito={carrito}
-                aumentarCantidad={aumentarCantidad}
-                disminuirCantidad={disminuirCantidad}
-                eliminarProducto={eliminarProducto}
-                vaciarCarrito={vaciarCarrito}
-                total={total}
-                cantidadTotal={cantidadTotal}
-              />
-            }
-          />
-
+          <Route path="/" element={<Inicio />} />
           <Route path="/nosotros" element={<Nosotros />} />
-
-          <Route
-            path="/formularioCompra"
-            element={
-              <FormularioCompra
-                carrito={carrito}
-                total={total}
-                vaciarCarrito={vaciarCarrito}
-                mostrarToast={mostrarToast}
-              />
-            }
-          />
-
           <Route path="/contacto" element={<Contacto />} />
-
-          <Route
-            path="/producto/:id"
-            element={<DetalleProducto agregarAlCarrito={agregarAlCarrito} />}
-          />
         </Routes>
       </main>
       <Footer />
