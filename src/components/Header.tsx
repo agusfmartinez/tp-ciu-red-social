@@ -1,10 +1,11 @@
-import NavBar from "./NavBar";
+﻿import SocialNavBar from "./SocialNavBar";
 
-
-function Header({cantidadTotal}) {
-    return <header className="sticky-top">
-        <NavBar cantidadTotal={cantidadTotal}/>
+function Header() {
+  return (
+    <header className="sticky-top">
+      <SocialNavBar />
     </header>
-};
+  );
+}
 
 export default Header;

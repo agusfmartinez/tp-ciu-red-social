@@ -1,23 +1,13 @@
-import { Container, Row, Col } from "react-bootstrap";
-import Logo from "./Logo";
+﻿import { Container } from "react-bootstrap";
 
 function Footer() {
-    return (<footer>
-            <Container>
-                <Row>
-                    <Col md={6}>
-                        <Logo height={100}/>
-                        <p>&copy; 2026 El Doggy Style. Todos los derechos reservados.</p>
-                    </Col>
-                    <Col md={6}>
-                        <h5>Contáctanos</h5>
-                        <p>Email: info@eldoggystyle.com</p>
-                        <p>Teléfono: 123-456-7890</p>
-                    </Col>
-                </Row>
-            </Container>
-        </footer>
-    );
+  return (
+    <footer className="border-top py-4 mt-5">
+      <Container>
+        <p className="mb-0">UnaHur Anti-Social Net</p>
+      </Container>
+    </footer>
+  );
 }
 
 export default Footer;
