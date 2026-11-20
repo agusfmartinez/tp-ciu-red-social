@@ -1,12 +1,7 @@
-﻿import CategoryCard from '../components/CategoryCard';
-import ProductCard from '../components/ProductCard';
-import { useProductos } from '../hooks/productosHook';
-import { useCategorias } from '../hooks/categoriasHook';
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
 
-const Inicio = ({ agregarAlCarrito, carrito }) => {
-    const categorias = useCategorias();
-    const productos = useProductos();
+const Inicio = () => {
+   
 
     return (
         <>
@@ -30,13 +25,7 @@ const Inicio = ({ agregarAlCarrito, carrito }) => {
                         <h2 className="h3 mb-0">Novedades de la comunidad</h2>
                     </div>
                 </div>
-                <div className="row py-2">
-                    {categorias.map((c) => (
-                        <div key={c.id} className="col-6 col-md-4 col-lg-2 pb-3">
-                            <CategoryCard nombre={c.categoria} imagen={c.imagen} />
-                        </div>
-                    ))}
-                </div>
+               
             </section>
 
             <section className="container pb-5">
@@ -47,33 +36,7 @@ const Inicio = ({ agregarAlCarrito, carrito }) => {
                     </div>
                     <Link to="/productos" className="link-success">Ver todas las novedades</Link>
                 </div>
-                <div className="row py-2">
-                    {productos
-                        .filter((producto) => producto.destacado)
-                        .slice(0, 4)
-                        .map((producto) => {
-                            const productoEnCarrito = carrito.find(
-                                item => item.id === producto.id
-                            );
-                            const stockDisponible = producto.stock - (
-                                productoEnCarrito ? productoEnCarrito.cantidad : 0
-                            );
-
-                            return (
-                                <div key={producto.id} className="col-12 col-sm-6 col-lg-3 pb-3">
-                                    <ProductCard
-                                        id={producto.id}
-                                        nombre={producto.nombre}
-                                        precio={producto.precio}
-                                        agregar={() => agregarAlCarrito(producto)}
-                                        categoria={producto.categoria}
-                                        stock={stockDisponible}
-                                        imagen={producto.imagen}
-                                    />
-                                </div>
-                            );
-                        })}
-                </div>
+    
             </section>
 
             <section className="container pb-5">
