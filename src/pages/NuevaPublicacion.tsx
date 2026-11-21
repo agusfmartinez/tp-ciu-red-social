@@ -1,6 +1,11 @@
 import { useState } from "react";
+import type { DatosToast } from "../hooks/toastHook";
 
-function FormularioCompra({ carrito, total, vaciarCarrito, mostrarToast }) {
+interface NuevaPublicacionProps {
+  mostrarToast: (datos: DatosToast) => void;
+}
+
+function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
 
   const [formulario, setFormulario] = useState({
 
@@ -22,18 +27,6 @@ function FormularioCompra({ carrito, total, vaciarCarrito, mostrarToast }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (carrito.length === 0) {
-      mostrarToast({
-        mensaje: "No hay ninguna compra pendiente.",
-        tipo: "danger",
-        titulo:'Resumen Compra'
-      });
-      return;
-    }
-
-    // Vaciamos el carrito compartido
-    vaciarCarrito();
-
     setFormulario({
       nombre: "",
       email: "",
@@ -47,26 +40,13 @@ function FormularioCompra({ carrito, total, vaciarCarrito, mostrarToast }) {
       mensaje:'¡Muchas gracias!',
       tipo:'success',
       delay: 7000,
-      titulo:'¡Compra realizada correctamente!',
+      titulo:'Publicación realizada correctamente!',
     });
   };
 
   return (
       <div className="container my-5">
-        <h2>Formulario de compra</h2>
-
-        {carrito.length === 0 ? (
-          <div className="alert alert-warning">
-            No hay ninguna compra pendiente. Agregá productos para continuar.
-          </div>
-        ) : (
-          <div className="alert alert-info">
-            Tenés {carrito.reduce((total, producto) => total + producto.cantidad, 0)} producto(s) en tu carrito.
-            <br />
-            Total de la compra: ${total.toLocaleString("es-AR")}
-          </div>
-        )}
-
+        <h2>Nueva publicación</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="nombre" className="form-label">
@@ -160,16 +140,12 @@ function FormularioCompra({ carrito, total, vaciarCarrito, mostrarToast }) {
             />
           </div>
 
-          <button
-            type="submit"
-            className="btn btn-dark"
-            disabled={carrito.length === 0}
-          >
-            Confirmar compra
+          <button type="submit" className="btn btn-dark">
+            Publicar
           </button>
         </form>
       </div>
   );
 }
 
-export default FormularioCompra;
+export default NuevaPublicacion;

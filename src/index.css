@@ -46,9 +46,10 @@ header.sticky-top {
 }
 
 .nav-link {
-  margin-left: 2rem;
-  font-size: 1.5rem;
+  margin-left: 1rem;
+  font-size: 1.1rem;
   color: var(--color-texto-claro);
+   white-space: nowrap;
   --bs-nav-link-hover-color: var(--color-acento);
 }
 
