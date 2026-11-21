@@ -1,10 +1,8 @@
+﻿
+/*import { useState } from 'react';
 
-import { useState } from 'react';
-import ProductCard from '../components/ProductCard';
-import { useProductos } from '../hooks/productosHook';
+
 import { useSearchParams } from 'react-router';
-import { useCategorias } from '../hooks/categoriasHook';
-
 const Productos = ({ agregarAlCarrito, carrito }) => {
 
   const [busqueda, setBusqueda] = useState('');
@@ -146,3 +144,5 @@ const Productos = ({ agregarAlCarrito, carrito }) => {
 };
 
 export default Productos;
+
+*/

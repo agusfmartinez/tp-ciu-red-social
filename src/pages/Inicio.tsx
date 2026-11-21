@@ -12,8 +12,8 @@ const Inicio = () => {
                     <p className="lead col-lg-8 mb-4">
                         Un lugar para descubrir temas, compartir ideas y conectar con otras personas de la comunidad.
                     </p>
-                    <Link to="/productos" className="btn btn-light rounded-pill px-4">
-                        Explorar novedades
+                    <Link to="/publicaciones" className="btn btn-light rounded-pill px-4">
+                        Explorar publicaciones
                     </Link>
                 </div>
             </section>
@@ -22,7 +22,7 @@ const Inicio = () => {
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
                         <p className="text-uppercase text-muted small mb-1">Explorá</p>
-                        <h2 className="h3 mb-0">Novedades de la comunidad</h2>
+                        <h2 className="h3 mb-0">Publicaciones de la comunidad</h2>
                     </div>
                 </div>
                
@@ -32,9 +32,9 @@ const Inicio = () => {
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
                         <p className="text-uppercase text-muted small mb-1">Para vos</p>
-                        <h2 className="h3 mb-0">Novedades Destacadas</h2>
+                        <h2 className="h3 mb-0">Publicaciones Destacadas</h2>
                     </div>
-                    <Link to="/productos" className="link-success">Ver todas las novedades</Link>
+                    <Link to="/publicaciones" className="link-success">Ver todas las publicaciones</Link>
                 </div>
     
             </section>
@@ -61,3 +61,4 @@ const Inicio = () => {
 };
 
 export default Inicio;
+

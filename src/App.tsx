@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router";
+﻿import { Route, Routes } from "react-router";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Inicio from "./pages/Inicio";
 import Nosotros from "./pages/Nosotros";
 import Contacto from "./pages/Contacto";
+import Publicaciones from "./pages/Publicaciones";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/publicaciones" element={<Publicaciones />} />
         </Routes>
       </main>
       <Footer />
@@ -22,3 +24,4 @@ function App() {
 }
 
 export default App;
+

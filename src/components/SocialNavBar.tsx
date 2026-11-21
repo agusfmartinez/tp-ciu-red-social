@@ -14,6 +14,7 @@ function SocialNavBar() {
             <Nav.Link as={NavLink} to="/" end>Inicio</Nav.Link>
             <Nav.Link as={NavLink} to="/nosotros">Nosotros</Nav.Link>
             <Nav.Link as={NavLink} to="/contacto">Contacto</Nav.Link>
+            <Nav.Link as={NavLink} to="/publicaciones">Publicaciones</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
