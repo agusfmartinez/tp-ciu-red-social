@@ -2,17 +2,23 @@ import { useState } from 'react';
 
 const formularioVacio = { nombre: '', email: '', mensaje: '' };
 
+interface Errores {
+  nombre?: string;
+  email?: string;
+  mensaje?: string;
+}
+
 const Contacto = () => {
   const [formulario, setFormulario] = useState(formularioVacio);
-  const [errores, setErrores] = useState({});
+  const [errores, setErrores] = useState<Errores>({});
   const [enviado, setEnviado] = useState(false);
 
-  function handleChange(e) {
-    setFormulario({ ...formulario, [e.target.name]: e.target.value });
+  function handleChange(name: string, value: string) {
+    setFormulario({ ...formulario, [name]: value });
   }
 
   function validar() {
-    const nuevosErrores = {};
+    const nuevosErrores: Errores = {};
 
     if (formulario.nombre.trim() === '') {
       nuevosErrores.nombre = 'El nombre es obligatorio.';
@@ -31,9 +37,7 @@ const Contacto = () => {
     return nuevosErrores;
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
+  function handleSubmit() {
     const nuevosErrores = validar();
     setErrores(nuevosErrores);
 
@@ -63,7 +67,7 @@ const Contacto = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} noValidate>
+          <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} noValidate>
             <div className="mb-3">
               <label htmlFor="nombre" className="form-label">Nombre</label>
               <input
@@ -72,7 +76,7 @@ const Contacto = () => {
                 type="text"
                 className={`form-control ${errores.nombre ? 'is-invalid' : ''}`}
                 value={formulario.nombre}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
               <div className="invalid-feedback">{errores.nombre}</div>
             </div>
@@ -85,7 +89,7 @@ const Contacto = () => {
                 type="email"
                 className={`form-control ${errores.email ? 'is-invalid' : ''}`}
                 value={formulario.email}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
               <div className="invalid-feedback">{errores.email}</div>
             </div>
@@ -95,10 +99,10 @@ const Contacto = () => {
               <textarea
                 id="mensaje"
                 name="mensaje"
-                rows="4"
+                rows={4}
                 className={`form-control ${errores.mensaje ? 'is-invalid' : ''}`}
                 value={formulario.mensaje}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target.name, e.target.value)}
               />
               <div className="invalid-feedback">{errores.mensaje}</div>
             </div>

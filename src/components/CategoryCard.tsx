@@ -1,6 +1,9 @@
 import { Link } from 'react-router'
 
-const CategoryCard = ({ nombre, imagen }) => {
+type CategoryCardProps = { nombre: string; imagen: string };
+
+const CategoryCard = ({ nombre, imagen }: CategoryCardProps) => {
+
   return (
     <Link
       to={`/productos?categoria=${encodeURIComponent(nombre)}`}
