@@ -16,6 +16,10 @@ function SocialNavBar() {
             <Nav.Link as={NavLink} to="/contacto">Contacto</Nav.Link>
             <Nav.Link as={NavLink} to="/publicaciones">Publicaciones</Nav.Link>
           </Nav>
+          <Nav className="ms-auto">
+            <Nav.Link as={NavLink} to="/login">Iniciar sesión</Nav.Link>
+            <Nav.Link as={NavLink} to="/registro">Registrarse</Nav.Link>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
