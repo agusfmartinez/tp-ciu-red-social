@@ -1,25 +1,25 @@
 //definimos los tipos de apis que creamos en el tp2 de persistencia
 
-export interface ControllersUser {
+export interface ControllerUser {
   id: string;
   nickName: string;
 }
 
-export interface ControllersTag {
+export interface ControllerTag {
   id: string;
   nombre: string;
 }
 
-export interface ControllersImage {
+export interface ControllerImage {
   id: string;
   url: string;
 }
 
-export interface ControllersComment {
+export interface ControllerComment {
   id: string;
   comentario: string;
   fecha: string;
-  user?: ControllersUser | string;
+  user?: ControllerUser | string;
   post?: string;
   visible?: boolean;
 }
@@ -28,9 +28,9 @@ export interface ControllersPost {
   id: string;
   descripcion: string;
   fecha: string;
-  user: ControllersUser;
-  tags: ControllersTag[];
-  images: ControllersImage[];
+  user: ControllerUser;
+  tags: ControllerTag[];
+  images: ControllerImage[];
   comments?: ControllersComment[];
 }
 
