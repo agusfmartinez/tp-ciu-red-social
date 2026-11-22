@@ -7,8 +7,7 @@ function SocialNavBar() {
   return (
     <Navbar expand="lg" className="navbar-estilos" variant="dark">
       <Container>
-        <Navbar.Brand as={Link} to="/">UnaHur Anti-Social Net</Navbar.Brand>
-        <Navbar.Toggle aria-controls="social-navbar" />
+        <Navbar.Brand as={Link} to="/" className="mx-auto mx-lg-0">UnaHur Anti-Social Net</Navbar.Brand>
         <Navbar.Collapse id="social-navbar">
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/" end>Inicio</Nav.Link>

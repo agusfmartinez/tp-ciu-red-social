@@ -2,7 +2,7 @@
 
 function Footer() {
   return (
-    <footer className="border-top py-4 mt-5">
+    <footer className="border-top py-4 mt-5 d-none d-lg-block">
       <Container>
         <p className="mb-0">UnaHur Anti-Social Net</p>
       </Container>
