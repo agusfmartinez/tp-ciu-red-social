@@ -1,24 +1,19 @@
 import { request } from '../lib/apiClient';
+import type { ControllerUser } from '../types/controllers';
 
-export function listarUsuarios() {
+export function listarUsuarios(): Promise<ControllerUser[]> {
   return request('/users');
 }
 
-export async function buscarOCrearUsuario(nickName: string) {
+export async function buscarUsuario(nickName: string) {
   const nick = nickName.trim().toLowerCase();
   const usuarios = await listarUsuarios();
-  const existente = usuarios.find((u: any) => u.nickName === nick);
+  return usuarios.find((u) => u.nickName === nick);
+}
 
-  if (existente) {
-    return existente;
-  }
-
-  await request('/users', {
-    method: 'POST',
-    //convertimos el objeto en formato json
-    body: JSON.stringify({ nickName: nick }),
+export function crearUsuario(nickName: string){
+  return request('/users', {
+    method:'POST',
+    body: JSON.stringify({nickName: nickName.trim()}),
   });
-
-  const actualizados = await listarUsuarios();
-  return actualizados.find((u: any) => u.nickName === nick);
 }
