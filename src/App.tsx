@@ -10,6 +10,7 @@ import Registro from "./pages/Registro";
 import ToastGeneral from "./components/Toast";
 import { useToast } from "./hooks/toastHook";
 import NuevaPublicacion from "./pages/NuevaPublicacion";
+import BottomNavBar from "./components/BottomNavBar";
 
 function App() {
   const { toast, mostrarToast, cerrarToast } = useToast();
@@ -37,6 +38,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <BottomNavBar />
     </>
   );
 }
