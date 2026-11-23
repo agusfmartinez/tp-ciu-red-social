@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { buscarOCrearUsuario, buscarUsuario } from '../services/usersService';
+import { crearUsuario, buscarUsuario } from '../services/usersService';
 
 // la password la validamos solo en el front para simular un login real
 const password_fija = '123456';
@@ -36,7 +36,7 @@ export function useUsuarioActual() {
   }
 
   async function registrarse(nickName: string) {
-    const creado = await buscarOCrearUsuario(nickName);
+    const creado = await crearUsuario(nickName);
     return guardar(creado);
   }
 
