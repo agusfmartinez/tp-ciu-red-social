@@ -7,6 +7,7 @@ export type PostCardProps = {
   images: string[];
   visibleCommentsCount: number;
   createdAt: string;
+  comments?: { id: number; author: string; text: string; createdAt: string }[];
 };
 
 function PostCard({

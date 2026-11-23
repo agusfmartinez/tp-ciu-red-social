@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router';
 import PostCard, { type PostCardProps } from '../components/PostCard';
 
 // Datos temporales borrar cuando tengamos backend
-const publicaciones: PostCardProps[] = [
+export const publicaciones: PostCardProps[] = [
   {
     id: 1,
     description: '¿Qué espacio de la UNAHUR recomiendan para estudiar entre clases?',
@@ -11,6 +11,24 @@ const publicaciones: PostCardProps[] = [
     images: [],
     visibleCommentsCount: 4,
     createdAt: '2026-11-18T14:30:00',
+    comments: [
+      {
+        id: 1, author: 'Lucía',
+        text: 'La biblioteca tiene espacios tranquilos en el primer piso.',
+        createdAt: '2026-11-18T15:00:00'
+      },
+      {
+        id: 2, author: 'Tomás',
+        text: 'También recomiendo el patio cuando está lindo.',
+        createdAt: '2026-11-18T15:20:00'
+      },
+      { id: 3, author: 'Micaela', text: 'Hay mesas disponibles cerca del buffet.', createdAt: '2026-11-18T16:10:00' },
+      {
+        id: 4, author: 'Juan',
+        text: 'El espacio de estudio del segundo piso suele ser silencioso.',
+        createdAt: '2026-11-18T17:05:00'
+      },
+    ],
   },
   {
     id: 2,
@@ -19,6 +37,18 @@ const publicaciones: PostCardProps[] = [
     images: [],
     visibleCommentsCount: 2,
     createdAt: '2026-11-17T11:00:00',
+    comments: [
+      {
+        id: 1, author: 'Sofía',
+        text: 'Los resúmenes compartidos en el grupo ayudan un montón.',
+        createdAt: '2026-11-17T12:00:00'
+      },
+      {
+        id: 2, author: 'Nicolás',
+        text: 'Podemos armar una guía entre todos.',
+        createdAt: '2026-11-17T13:30:00'
+      },
+    ],
   },
   {
     id: 3,
@@ -27,6 +57,7 @@ const publicaciones: PostCardProps[] = [
     images: [],
     visibleCommentsCount: 0,
     createdAt: '2026-11-16T09:15:00',
+    comments: [],
   },
 ];
 
