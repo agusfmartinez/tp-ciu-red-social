@@ -1,6 +1,30 @@
-import { Link } from "react-router";
+import { useState, type FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { useUsuarioActual } from '../hooks/useUsuarioActual';
 
 const Registro = () => {
+
+   const [nickName, setNickName] = useState('');
+  const [error, setError] = useState('');
+  const [cargando, setCargando] = useState(false);
+  const { registrarse } = useUsuarioActual();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError('');
+    setCargando(true);
+
+    try {
+      await registrarse(nickName);
+      navigate('/publicaciones');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'No se pudo registrar.');
+    } finally {
+      setCargando(false);
+    }
+  }
+
   return (
     <div className="container py-5">
         <div className="row justify-content-center">
@@ -9,17 +33,31 @@ const Registro = () => {
                     <div className="card-body p-4">
                         <h1>Registrate</h1>
 
-                        <form>
+                        {error && <div className="alert alert-danger py-2">{error}</div>}
+
+                        <form onSubmit={handleSubmit}>
                             <div className="mb-3">
-                                <label htmlFor="nickName">Nombre de usuario</label>
-                                <input type="text" className="form-control" id="nickName" placeholder="nickName"/>
+                            <label htmlFor="nickName">Nombre de usuario</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="nickName"
+                                value={nickName}
+                                onChange={(e) => setNickName(e.currentTarget.value)}
+                                minLength={4}
+                                maxLength={50}
+                                required
+                                />
                             </div>
 
                             <div className="alert alert-info small py-2">
                               Tu contraseña será <strong>123456</strong>.
                             </div>
+            
+                            <button type="submit" className="btn btn-primary" disabled={cargando}>
+                                {cargando ? 'Registrando...' : 'Registrarse'}
+                            </button>
 
-                            <button type="submit" className="btn btn-primary">Registrarse</button>
                         </form>
 
                         <p className="text-center small mt-4 mb-0">
