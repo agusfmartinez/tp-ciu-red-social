@@ -1,6 +1,6 @@
 import type { PostCardProps } from '../components/PostCard';
 import { urlImagen } from '../config/api';
-import type { ControllerComment, ControllerPost, ComentarioVista } from './api';
+import type { ControllerComment, ControllerPost, ComentarioVista } from '../types/controllers';
 
 //Creamos el mapper para mapear la definición del controller con la definicion de postCard
 

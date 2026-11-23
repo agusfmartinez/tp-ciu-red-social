@@ -24,14 +24,14 @@ export interface ControllerComment {
   visible?: boolean;
 }
 
-export interface ControllersPost {
+export interface ControllerPost {
   id: string;
   descripcion: string;
   fecha: string;
   user: ControllerUser;
   tags: ControllerTag[];
   images: ControllerImage[];
-  comments?: ControllersComment[];
+  comments?: ControllerComment[];
 }
 
 export interface CrearPostInput {
