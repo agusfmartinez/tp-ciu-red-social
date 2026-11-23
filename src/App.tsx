@@ -11,6 +11,7 @@ import ToastGeneral from "./components/Toast";
 import { useToast } from "./hooks/toastHook";
 import NuevaPublicacion from "./pages/NuevaPublicacion";
 import BottomNavBar from "./components/BottomNavBar";
+import DetallePublicacion from "./pages/DetallePublicacion";
 
 function App() {
   const { toast, mostrarToast, cerrarToast } = useToast();
@@ -32,6 +33,7 @@ function App() {
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/publicaciones" element={<Publicaciones />} />
+          <Route path="/post/:id" element={<DetallePublicacion />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/nueva-publicacion" element={<NuevaPublicacion mostrarToast={mostrarToast} />} />
