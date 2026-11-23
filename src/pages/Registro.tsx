@@ -35,7 +35,6 @@ const Registro = () => {
           <div className="card border-0 rounded-4 shadow-sm">
             <div className="card-body p-4 p-md-5">
               <h1 className="h3 fw-bold text-center mb-1">Crear cuenta</h1>
-              <p className="text-muted text-center mb-4">Sumate a la comunidad UNAHUR</p>
 
               <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} noValidate>
                 <div className="mb-4">
