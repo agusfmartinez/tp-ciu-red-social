@@ -3,7 +3,8 @@ import type { ControllerUser } from "../types/controllers";
 
 export interface AuthContextType {
   usuario: ControllerUser | null;
-  login: (usuario: ControllerUser) => void;
+  ingresar: (nickName: string, password: string) => Promise<void>;
+  registrarse: (nickName: string) => Promise<void>;
   logout: () => void;
 }
 
