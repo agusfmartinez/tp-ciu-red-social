@@ -12,6 +12,7 @@ export function mapearPost(post: ControllerPost): PostCardProps {
     tags: (post.tags ?? []).map((tag) => tag.nombre),
     images: (post.images ?? []).map((image) => urlImagen(image.url)),
     visibleCommentsCount: post.commentsCount ?? 0,
+    author: post.user?.nickName ?? 'Usuario desconocido',
   };
 }
 

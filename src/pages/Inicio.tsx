@@ -1,6 +1,13 @@
 ﻿import { Link } from 'react-router';
+import PostCard from '../components/PostCard';
+import { usePosts } from '../hooks/usePosts';
 
 const Inicio = () => {
+
+    const { posts, cargando, error } = usePosts();
+  const recientes = [...posts]
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 4);
    
 
     return (
@@ -28,11 +35,22 @@ const Inicio = () => {
             <section className="container py-5">
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
-                        <p className="text-uppercase text-muted small mb-1">Explorá</p>
-                        <h2 className="h3 mb-0">Publicaciones de la comunidad</h2>
+                    <p className="text-uppercase text-muted small mb-1">Explorá</p>
+                    <h2 className="h3 mb-0">Publicaciones de la comunidad</h2>
                     </div>
+                    <Link to="/publicaciones" className="link-success">Ver todas las publicaciones</Link>
                 </div>
-               
+
+                {cargando && <p className="text-muted">Cargando publicaciones...</p>}
+                {error && <div className="alert alert-danger">{error}</div>}
+
+                <div className="row g-4">
+                    {recientes.map((post) => (
+                    <div className="col-12 col-lg-6" key={post.id}>
+                        <PostCard {...post} />
+                    </div>
+                    ))}
+                </div>
             </section>
 
             <section className="container pb-5">

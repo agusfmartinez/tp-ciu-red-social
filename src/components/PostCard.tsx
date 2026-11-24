@@ -1,29 +1,22 @@
 ﻿import { Link } from 'react-router';
 
 export type PostCardProps = {
-  id: number | string;
+  id: string;
+  author: string;
   description: string;
   tags: string[];
   images: string[];
   visibleCommentsCount: number;
   createdAt: string;
-  comments?: { id: number; author: string; text: string; createdAt: string }[];
 };
 
-function PostCard({
-  id,
-  description,
-  tags,
-  images,
-  visibleCommentsCount,
-  createdAt,
-}: PostCardProps) {
+function PostCard({ id, author, description, tags, images, visibleCommentsCount, createdAt }: PostCardProps) {
   return (
     <article className="card h-100 border-0 rounded-4 shadow-sm">
       <div className="card-body p-4">
         <div className="d-flex align-items-center gap-3 mb-3">
           <div>
-            <p className="fw-semibold mb-0">Comunidad UNAHUR</p>
+            <p className="fw-semibold mb-0">{author}</p>
             <small className="text-muted">
               {new Date(createdAt).toLocaleDateString('es-AR')}
             </small>
@@ -32,14 +25,13 @@ function PostCard({
 
         <p className="mb-3" style={{ whiteSpace: 'pre-line' }}>{description}</p>
         
-        {images[0] && (
-          <img
-            src={images[0]}
-            alt="Imagen de la publicación"
-            className="img-fluid rounded-3 mb-3 w-100"
-            style={{ maxHeight: 360, objectFit: 'cover' }}
-          />
-        )}
+        <img
+          src={images[0] ?? '/placeholder.svg'}
+          alt="Imagen de la publicación"
+          className="img-fluid rounded-3 mb-3 w-100"
+          style={{ height: 220, objectFit: 'cover', background: '#e2e2e2 url(/placeholder.svg) center / cover', }}
+          onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+        />
 
         <div className="d-flex flex-wrap gap-2 mb-3">
           {tags.map((tag) => (

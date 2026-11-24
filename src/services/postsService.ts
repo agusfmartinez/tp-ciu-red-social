@@ -5,7 +5,7 @@ export function listarPosts(): Promise<ControllerPost[]> {
   return request('/posts');
 }
 
-export function obtenerPost(id: string): Promise<ControllerPost[]> {
+export function obtenerPost(id: string): Promise<ControllerPost> {
   return request('/posts/' + id);
 }
 
