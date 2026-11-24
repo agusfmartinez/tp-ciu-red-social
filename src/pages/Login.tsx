@@ -6,12 +6,18 @@ function Login() {
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [credencialesIncorrectas, setCredencialesIncorrectas] = useState(false);
   const [cargando, setCargando] = useState(false);
   const { ingresar } = useAuth();
   const navigate = useNavigate();
 
-  async function handleSubmit() {
+  function limpiarError() {
     setError("");
+    setCredencialesIncorrectas(false);
+  }
+
+  async function handleSubmit() {
+    limpiarError();
 
     if (!nickName.trim()) {
       setError("Ingresá tu nombre de usuario.");
@@ -27,9 +33,17 @@ function Login() {
       await ingresar(nickName, password);
       navigate("/publicaciones");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "No se pudo iniciar sesión.");
+      const mensaje = err instanceof Error ? err.message : "No se pudo iniciar sesión.";
+      if (mensaje === "Contraseña incorrecta.") {
+        setNickName("");
+        setPassword("");
+        setError("Credenciales Incorrectas");
+        setCredencialesIncorrectas(true);
+        return;
+      }
+      setError(mensaje);
     } finally {
-      setCargando(false);
+        setCargando(false);
     }
   }
 
@@ -52,12 +66,14 @@ function Login() {
                     value={nickName}
                     onChange={(event) => {
                       setNickName(event.target.value);
-                      setError("");
+                      limpiarError();
                     }}
                     autoComplete="username"
                     maxLength={50}
                   />
-                  {error && <div className="invalid-feedback">{error}</div>}
+                  {error && !credencialesIncorrectas && (
+                    <div className="invalid-feedback">{error}</div>
+                  )}
                 </div>
 
                 <div className="mb-4">
@@ -70,7 +86,7 @@ function Login() {
                     value={password}
                     onChange={(event) => {
                       setPassword(event.target.value);
-                      setError("");
+                      limpiarError();
                     }}
                     autoComplete="current-password"
                   />
