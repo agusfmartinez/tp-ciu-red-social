@@ -34,10 +34,10 @@ function Login() {
       navigate("/publicaciones");
     } catch (err) {
       const mensaje = err instanceof Error ? err.message : "No se pudo iniciar sesión.";
-      if (mensaje === "Contraseña incorrecta.") {
+      if (mensaje === "Credenciales incorrectas.") {
         setNickName("");
         setPassword("");
-        setError("Credenciales Incorrectas");
+        setError("Credenciales incorrectas.");
         setCredencialesIncorrectas(true);
         return;
       }
