@@ -1,9 +1,9 @@
 import { request } from '../lib/apiClient';
-import type { ControllerComment, CrearComentarioInput } from '../types/controllers';
+import type { CrearComentarioInput } from '../types/controllers';
 
-export function listarComentarios() {
-  return request('/comments');
-}
+// export function listarComentarios() {
+//   return request('/comments');
+// }
 
 export function crearComentario(datos: CrearComentarioInput) {
   return request('/comments', {
@@ -13,15 +13,15 @@ export function crearComentario(datos: CrearComentarioInput) {
   });
 }
 
-export function contarComentarios(comentarios: ControllerComment[]) {
-  const conteo: { [id: string]: number } = {};
+// export function contarComentarios(comentarios: ControllerComment[]) {
+//   const conteo: { [id: string]: number } = {};
 
-  comentarios.forEach((comentario) => {
-    if (comentario.visible) {
-      const id = comentario.post;
-      if (id) conteo[id] = (conteo[id] ?? 0) + 1;
-    }
-  });
+//   comentarios.forEach((comentario) => {
+//     if (comentario.visible) {
+//       const id = comentario.post;
+//       if (id) conteo[id] = (conteo[id] ?? 0) + 1;
+//     }
+//   });
 
-  return conteo;
-}
+//   return conteo;
+// }

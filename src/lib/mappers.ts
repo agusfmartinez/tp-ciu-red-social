@@ -11,7 +11,7 @@ export function mapearPost(post: ControllerPost): PostCardProps {
     createdAt: post.fecha,
     tags: (post.tags ?? []).map((tag) => tag.nombre),
     images: (post.images ?? []).map((image) => urlImagen(image.url)),
-    visibleCommentsCount: post.comments?.length ?? 0,
+    visibleCommentsCount: post.commentsCount ?? 0,
   };
 }
 

@@ -1,11 +1,11 @@
 import { request } from '../lib/apiClient';
-import type { CrearPostInput } from '../types/controllers';
+import type { CrearPostInput, ControllerPost } from '../types/controllers';
 
-export function listarPosts() {
+export function listarPosts(): Promise<ControllerPost[]> {
   return request('/posts');
 }
 
-export function obtenerPost(id: string) {
+export function obtenerPost(id: string): Promise<ControllerPost[]> {
   return request('/posts/' + id);
 }
 

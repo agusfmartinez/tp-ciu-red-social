@@ -32,6 +32,7 @@ export interface ControllerPost {
   tags: ControllerTag[];
   images: ControllerImage[];
   comments?: ControllerComment[];
+  commentsCount?: number;
 }
 
 export interface CrearPostInput {
