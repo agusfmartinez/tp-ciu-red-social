@@ -4,12 +4,19 @@ import { obtenerPost } from '../services/postsService';
 import { urlImagen } from '../config/api';
 import { mapearComentario } from '../lib/mappers';
 import type { ControllerPost } from '../types/controllers';
+import { useAuth } from '../hooks/useAuth';
+import { crearComentario } from '../services/commentsService';
 
 function DetallePublicacion() {
   const { id } = useParams();
   const [post, setPost] = useState<ControllerPost | null>(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
+  const { usuario } = useAuth();
+  const [comentario, setComentario] = useState('');
+  const [errorComentario, setErrorComentario] = useState('');
+  const [enviando, setEnviando] = useState(false);
+  const [version, setVersion] = useState(0);
 
   useEffect(() => {
     if (!id) return;
@@ -17,10 +24,31 @@ function DetallePublicacion() {
       .then((datos) => setPost(datos))
       .catch((err) => setError(err instanceof Error ? err.message : 'No se pudo cargar la publicación.'))
       .finally(() => setCargando(false));
-  }, [id]);
+  }, [id, version]);
 
   if (cargando) {
     return <section className="container py-5"><p className="text-muted">Cargando publicación...</p></section>;
+  }
+
+  async function enviarComentario() {
+    const texto = comentario.trim();
+    if (texto === '') {
+      setErrorComentario('El comentario no puede estar vacío.');
+      return;
+    }
+    if (!usuario || !id) return;
+
+    setErrorComentario('');
+    setEnviando(true);
+    try {
+      await crearComentario({ comentario: texto, postId: id, userId: usuario.id });
+      setComentario('');
+      setVersion((v) => v + 1);
+      setEnviando(false);
+    } catch (err) {
+      setErrorComentario(err instanceof Error ? err.message : 'No se pudo enviar el comentario.');
+      setEnviando(false);
+    }
   }
 
   if (error || !post) {
@@ -64,6 +92,33 @@ function DetallePublicacion() {
 
           <section className="border-top pt-4" aria-labelledby="comentarios-titulo">
             <h2 id="comentarios-titulo" className="h5 mb-3">Comentarios ({comentarios.length})</h2>
+
+            
+          {usuario ? (
+              <form className="my-4" onSubmit={(e) => { e.preventDefault(); enviarComentario(); }} noValidate>
+                <label htmlFor="comentario" className="form-label">Dejá tu comentario</label>
+                <textarea
+                  id="comentario"
+                  rows={3}
+                  maxLength={200}
+                  className={`form-control ${errorComentario ? 'is-invalid' : ''}`}
+                  value={comentario}
+                  onChange={(e) => { setComentario(e.target.value); setErrorComentario(''); }}
+                />
+                <div className="invalid-feedback">{errorComentario}</div>
+                <div className="d-flex justify-content-between align-items-center mt-2">
+                  <small className="text-muted">{comentario.length}/200</small>
+                  <button type="submit" className="btn btn-success rounded-pill px-4" disabled={enviando}>
+                    {enviando ? 'Enviando...' : 'Comentar'}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <p className="mt-4 mb-0 text-muted">
+                <Link to="/login" className="link-success">Iniciá sesión</Link> para comentar.
+              </p>
+            )}
+
             {comentarios.length ? (
               <ul className="list-unstyled mb-0">
                 {comentarios.map((comentario) => (
