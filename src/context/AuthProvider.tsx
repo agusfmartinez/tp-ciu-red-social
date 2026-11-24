@@ -24,11 +24,8 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function ingresar(nickName: string, password: string) {
     const encontrado = await buscarUsuario(nickName);
-    if (!encontrado) {
-      throw new Error("No existe un usuario con ese nombre.");
-    }
-    if (password !== PASSWORD_FIJA) {
-      throw new Error("Contraseña incorrecta.");
+    if (!encontrado || password !== PASSWORD_FIJA) {
+      throw new Error("Credenciales incorrectas.");
     }
     guardar(encontrado);
   }
