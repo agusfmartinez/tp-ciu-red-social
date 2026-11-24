@@ -6,15 +6,22 @@ const Inicio = () => {
     return (
         <>
             <section className="container pt-4 pt-md-5">
-                <div className="rounded-4 p-4 p-md-5 text-white shadow-sm" style={{ background: 'linear-gradient(120deg, #134C4A, #1D7874)' }}>
-                    <span className="badge rounded-pill text-bg-light mb-3">Comunidad UNAHUR</span>
-                    <h1 className="display-5 fw-bold">UnaHur Anti-Social Net</h1>
-                    <p className="lead col-lg-8 mb-4">
-                        Un lugar para descubrir temas, compartir ideas y conectar con otras personas de la comunidad.
-                    </p>
-                    <Link to="/publicaciones" className="btn btn-light rounded-pill px-4">
-                        Explorar publicaciones
-                    </Link>
+                <div className="rounded-4 p-4 p-md-5 text-white shadow-sm d-flex align-items-start gap-4" style={{ background: 'linear-gradient(120deg, #134C4A, #1D7874)' }}>
+                    <div>
+                        <span className="badge rounded-pill text-bg-light mb-3">Comunidad UNAHUR</span>
+                        <h1 className="display-5 fw-bold">UnaHur Anti-Social Net</h1>
+                        <p className="lead mb-4">
+                            Un lugar para descubrir temas, compartir ideas y conectar con otras personas de la comunidad.
+                        </p>
+                        <Link to="/publicaciones" className="btn btn-light rounded-pill px-4">
+                            Explorar publicaciones
+                        </Link>
+                    </div>
+                    <img
+                        src="/logRed.jpg"
+                        alt="Logo de UnaHur Anti-Social Net"
+                        className="img-fluid logoInicio flex-shrink-0 ms-auto"
+                    />
                 </div>
             </section>
 

@@ -145,6 +145,14 @@ header.sticky-top {
   height: auto;
 }
 
+.logoInicio {
+  width: 260px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin-top: 15px;
+}
+
 .imagenNosotros {
   width: 100%;
   height: 300px;
