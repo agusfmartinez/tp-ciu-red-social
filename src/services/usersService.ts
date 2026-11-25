@@ -17,3 +17,7 @@ export function crearUsuario(nickName: string){
     body: JSON.stringify({nickName: nickName.trim()}),
   });
 }
+
+export function obtenerUsuario(id: string): Promise<ControllerUser> {
+  return request('/users/' + id);
+}
