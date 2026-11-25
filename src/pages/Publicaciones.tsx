@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { useLocation, useSearchParams } from 'react-router';
 import PostCard from '../components/PostCard';
 import { usePosts } from '../hooks/usePosts';
 
@@ -7,6 +7,8 @@ function Publicaciones() {
   const [busqueda, setBusqueda] = useState('');
   const [orden, setOrden] = useState('recientes');
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const desdeLogin = (location.state as { desdeLogin?: boolean } | null)?.desdeLogin ?? false;
   const etiquetaSeleccionada = searchParams.get('tag') ?? '';
   const { posts: publicaciones, cargando, error } = usePosts();
 
@@ -38,7 +40,7 @@ function Publicaciones() {
   }
 
   return (   
-    <section className="container py-4 py-md-5">
+    <section className={`container py-4 py-md-5${desdeLogin ? " transicion-sesion" : ""}`}>
       <div className="mb-3 mb-md-4">
         <p className="text-uppercase small mb-1"><b>FEED DE LA COMUNIDAD</b></p>
         <h1 className="display-6 fw-bold">Publicaciones</h1>

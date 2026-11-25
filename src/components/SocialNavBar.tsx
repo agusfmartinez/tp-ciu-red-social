@@ -12,7 +12,7 @@ function SocialNavBar() {
 
   function handleLogout() {
     logout();
-    navigate('/');
+    navigate('/', { state: { desdeLogout: true } });
   }
 
   return (

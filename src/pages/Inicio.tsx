@@ -1,8 +1,10 @@
-import { Link } from 'react-router';
+﻿import { Link, useLocation } from 'react-router';
 import PostCard from '../components/PostCard';
 import { usePosts } from '../hooks/usePosts';
 
 const Inicio = () => {
+    const location = useLocation();
+    const desdeLogout = (location.state as { desdeLogout?: boolean } | null)?.desdeLogout ?? false;
 
     const { posts, cargando, error } = usePosts();
   const recientes = [...posts]
@@ -12,7 +14,7 @@ const Inicio = () => {
    
 
     return (
-        <>
+        <div className={desdeLogout ? "transicion-sesion" : ""}>
             <section className="container pt-4 pt-md-5">
                 <div className="hero-inicio rounded-4 p-4 p-md-5 text-white shadow-sm d-flex align-items-start gap-4">
                     <div>
@@ -93,7 +95,7 @@ const Inicio = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 

@@ -41,7 +41,7 @@ function Login() {
     setCargando(true);
     try {
       await ingresar(nickName, password);
-      navigate("/publicaciones");
+      navigate("/publicaciones", { state: { desdeLogin: true } });
     } catch (err) {
       const mensaje = err instanceof Error ? err.message : "No se pudo iniciar sesión.";
       if (mensaje === "Credenciales incorrectas.") {

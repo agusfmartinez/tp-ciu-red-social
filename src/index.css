@@ -313,3 +313,24 @@ footer {
   /* coincide con el padding-x de .nav-link para alinear con "Registrarse" */
   margin-right: 1rem;
 }
+
+.transicion-sesion {
+  animation: fundido-sesion 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+@keyframes fundido-sesion {
+  from {
+    opacity: 0;
+    transform: translateY(16px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transicion-sesion {
+    animation: none;
+  }
+}
