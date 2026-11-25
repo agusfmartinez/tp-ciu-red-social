@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router';
+import { Link } from 'react-router';
 import PostCard from '../components/PostCard';
 import { usePosts } from '../hooks/usePosts';
 
@@ -8,6 +8,7 @@ const Inicio = () => {
   const recientes = [...posts]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, 4);
+  const destacadas = posts.filter((post) => post.visibleCommentsCount > 10);
    
 
     return (
@@ -64,6 +65,14 @@ const Inicio = () => {
                         <h3 className="mb-0 textos-inicio-publi-destacadas"><b>Publicaciones Destacadas</b></h3>
                     </div>
                 </div>
+                <div className="row g-4">
+                    {destacadas.map((post) => (
+                        <div className="col-12 col-lg-6" key={post.id}>
+                            <PostCard {...post} />
+                        </div>
+                    ))}
+                </div>
+            
     
             </section>
 
@@ -74,7 +83,7 @@ const Inicio = () => {
                             <p className="text-uppercase small mb-1">Una comunidad para compartir</p>
                             <h2 className="h3">Cada idea puede iniciar una conversación</h2>
                             <p className="mb-0">
-                                Conocé el espacio y descubrí cómo participar de las conversaciones de la comunidad.
+                                 Conocé el espacio y descubrí cómo participar de las conversaciones de la comunidad.
                             </p>
                         </div>
                         <div className="col-12 col-md-4 d-flex gap-2 flex-wrap justify-content-md-end">
