@@ -1,30 +1,41 @@
 import { useEffect, useState } from 'react';
-import { Link, Navigate } from 'react-router';
+import { Link, Navigate, useParams  } from 'react-router';
 import PostCard, { type PostCardProps } from '../components/PostCard';
 import { useAuth } from '../hooks/useAuth';
 import { listarPostsDeUsuario } from '../services/postsService';
 import { mapearPost } from '../lib/mappers';
+import { obtenerUsuario } from '../services/usersService';
 
 function Perfil() {
+  const { id } = useParams();
   const { usuario } = useAuth();
+  const [nickName, setNickName] = useState('');
   const [posts, setPosts] = useState<PostCardProps[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    if (!usuario) return;
-    listarPostsDeUsuario(usuario.id)
-      .then((datos) => {
-        setPosts(datos.map(mapearPost));
-        setCargando(false);
-      })
-      .catch((err) => {
-        setError(err instanceof Error ? err.message : 'No se pudieron cargar tus publicaciones.');
-        setCargando(false);
-      });
-  }, [usuario]);
+  const idPerfil = id ?? usuario?.id;
+  const esMiPerfil = usuario !== null && idPerfil === usuario.id;
 
-  if (!usuario) {
+  useEffect(() => {
+    if (!idPerfil) return;
+    
+    async function cargar(idBuscado: string){
+        try {
+            const datosUsuario = await obtenerUsuario(idBuscado)
+            const datosPosts = await listarPostsDeUsuario(idBuscado)
+            setNickName(datosUsuario.nickName)
+            setPosts(datosPosts.map(mapearPost))
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'No se pudo cargar el perfil.')
+        }
+        setCargando(false)
+    }
+
+    cargar(idPerfil)
+  }, [idPerfil]);
+
+  if (!idPerfil) {
     return <Navigate to="/login" replace />;
   }
 
@@ -37,8 +48,8 @@ function Perfil() {
       <div className="card border-0 rounded-4 shadow-sm mb-4">
         <div className="card-body p-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
           <div>
-            <p className="text-uppercase text-muted small mb-1">Mi perfil</p>
-            <h1 className="h3 fw-bold mb-0">{usuario.nickName}</h1>
+            <p className="text-uppercase text-muted small mb-1">{esMiPerfil ? 'Mi perfil' : 'Perfil'}</p>
+            <h1 className="h3 fw-bold mb-0">{nickName}</h1>
             <small className="text-muted">
               {cargando ? 'Cargando...' : `${posts.length} publicaciones`}
             </small>
@@ -46,7 +57,7 @@ function Perfil() {
         </div>
       </div>
 
-      <h2 className="h5 mb-3">Mis publicaciones</h2>
+      <h2 className="h5 mb-3">{esMiPerfil ? 'Mis publicaciones' : 'Publicaciones'}</h2>
 
       {cargando && <p className="text-muted">Cargando publicaciones...</p>}
       {error && <div className="alert alert-danger">{error}</div>}
@@ -62,8 +73,10 @@ function Perfil() {
           </div>
         ) : (
           <div className="border rounded-4 p-5 text-center">
-            <h3 className="h6">Todavía no publicaste nada</h3>
-            <Link to="/nueva-publicacion" className="btn btn-success rounded-pill mt-2">Crear publicación</Link>
+            <h3 className="h6">{esMiPerfil ? 'Todavía no publicaste nada' : 'Este usuario todavía no publicó nada'}</h3>
+            {esMiPerfil && (
+                <Link to="/nueva-publicacion" className="btn btn-success rounded-pill mt-2">Crear publicación</Link>
+            )}
           </div>
         )
       )}

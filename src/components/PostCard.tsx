@@ -3,6 +3,7 @@
 export type PostCardProps = {
   id: string;
   author: string;
+  authorId: string;
   description: string;
   tags: string[];
   images: string[];
@@ -10,13 +11,15 @@ export type PostCardProps = {
   createdAt: string;
 };
 
-function PostCard({ id, author, description, tags, images, visibleCommentsCount, createdAt }: PostCardProps) {
+function PostCard({ id, author, authorId, description, tags, images, visibleCommentsCount, createdAt }: PostCardProps) {
   return (
     <article className="card h-100 border-0 rounded-4 shadow-sm">
       <div className="card-body p-4">
         <div className="d-flex align-items-center gap-3 mb-3">
           <div>
-            <p className="fw-semibold mb-0">{author}</p>
+            <Link to={`/usuario/${authorId}`} className="fw-semibold d-block link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+              {author}
+            </Link>
             <small className="text-muted">
               {new Date(createdAt).toLocaleDateString('es-AR')}
             </small>

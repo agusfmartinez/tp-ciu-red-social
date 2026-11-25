@@ -39,6 +39,7 @@ function App() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/nueva-publicacion" element={<NuevaPublicacion mostrarToast={mostrarToast} />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/usuario/:id" element={<Perfil />} />
         </Routes>
       </main>
       <Footer />

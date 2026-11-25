@@ -70,7 +70,9 @@ function DetallePublicacion() {
       <article className="card border-0 rounded-4 shadow-sm">
         <div className="card-body p-4 p-md-5">
           <header className="mb-4">
-            <p className="fw-semibold mb-0">{post.user.nickName}</p>
+            <Link to={`/usuario/${post.user.id}`} className="fw-semibold d-block link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover">
+              {post.user.nickName}
+            </Link>
             <small className="text-muted">{new Date(post.fecha).toLocaleDateString('es-AR')}</small>
           </header>
 
