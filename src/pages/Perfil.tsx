@@ -78,7 +78,7 @@ function Perfil() {
           <div className="border rounded-4 p-5 text-center">
             <h3 className="h6">{esMiPerfil ? 'Todavía no publicaste nada' : 'Este usuario todavía no publicó nada'}</h3>
             {esMiPerfil && (
-                <Link to="/nueva-publicacion" className="btn btn-success rounded-pill mt-2">Crear publicación</Link>
+                <Link to="/nueva-publicacion" className="btn btn-primary rounded-pill mt-2">Crear publicación</Link>
             )}
           </div>
         )
