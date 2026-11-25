@@ -38,16 +38,16 @@ function Publicaciones() {
   }
 
   return (   
-    <section className="container py-5">
-      <div className="mb-4">
+    <section className="container py-4 py-md-5">
+      <div className="mb-3 mb-md-4">
         <p className="text-uppercase text-muted small mb-1">Feed de la comunidad</p>
         <h1 className="display-6 fw-bold">Publicaciones</h1>
-        <p className="text-muted">Explorá publicaciones y conversaciones de la UNAHUR.</p>
+        <p className="text-muted d-none d-md-block">Explorá publicaciones y conversaciones de la UNAHUR.</p>
       </div>
 
-      <div className="row g-3 mb-4">
+      <div className="row g-2 g-md-3 mb-4">
         <div className="col-12 col-md-6">
-          <label className="form-label" htmlFor="buscar-publicaciones">Buscar publicaciones</label>
+          <label className="form-label d-none d-md-block" htmlFor="buscar-publicaciones">Buscar publicaciones</label>
           <input
             id="buscar-publicaciones"
             type="search"
@@ -57,8 +57,8 @@ function Publicaciones() {
             onChange={(event) => setBusqueda(event.currentTarget.value)}
           />
         </div>
-        <div className="col-12 col-md-3">
-          <label className="form-label" htmlFor="filtrar-etiqueta">Etiqueta</label>
+        <div className="col-6 col-md-3">
+          <label className="form-label d-none d-md-block" htmlFor="filtrar-etiqueta">Etiqueta</label>
           <select
             id="filtrar-etiqueta"
             className="form-select"
@@ -71,8 +71,8 @@ function Publicaciones() {
             ))}
           </select>
         </div>
-        <div className="col-12 col-md-3">
-          <label className="form-label" htmlFor="ordenar-publicaciones">Ordenar por</label>
+        <div className="col-6 col-md-3">
+          <label className="form-label d-none d-md-block" htmlFor="ordenar-publicaciones">Ordenar por</label>
           <select
             id="ordenar-publicaciones"
             className="form-select"
