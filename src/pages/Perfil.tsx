@@ -48,9 +48,9 @@ function Perfil() {
       <div className="card border-0 rounded-4 shadow-sm mb-4">
         <div className="card-body p-4 d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
           <div>
-            <p className="text-uppercase text-muted small mb-1">{esMiPerfil ? 'Mi perfil' : 'Perfil'}</p>
-            <h1 className="h3 fw-bold mb-0">{nickName}</h1>
-            <p className="text-muted small mb-0">
+            <p className="text-uppercase mb-1">{esMiPerfil ? 'Mi perfil' : 'Perfil'}</p>
+            <h2 className="h3 fw-bold mb-0">{nickName}</h2>
+            <p className="mb-0">
               {cargando ? 'Cargando...' : `${posts.length} publicaciones`}
             </p>
           </div>
@@ -60,7 +60,7 @@ function Perfil() {
         </div>
       </div>
 
-      <h2 className="h5 mb-3">{esMiPerfil ? 'Mis publicaciones' : 'Publicaciones'}</h2>
+      <h4 className="mb-3">{esMiPerfil ? 'Mis publicaciones' : 'Publicaciones'}</h4>
 
       {cargando && <p className="text-muted">Cargando publicaciones...</p>}
       {error && <div className="alert alert-danger">{error}</div>}

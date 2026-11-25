@@ -154,7 +154,7 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
   return (
     <section className="container my-5" style={{ maxWidth: 760 }}>
       <h1 className="h2 mb-2">Nueva publicación</h1>
-      <p className="text-muted mb-4">
+      <p className="mb-4">
         Compartí una idea, consulta o recurso con la comunidad.
       </p>
 
@@ -288,7 +288,7 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
                   }
                 }}
               />
-              <button type="button" className="btn btn-outline-secondary" onClick={agregarUrl}>Agregar</button>
+              <button type="button" className="btn btn-primary" onClick={agregarUrl}>Agregar</button>
             </div>
             {errorUrl && <div className="invalid-feedback d-block">{errorUrl}</div>}
 
@@ -356,7 +356,7 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
             )}
           </div>
 
-          <button type="submit" className="btn btn-dark" disabled={enviando}>
+          <button type="submit" className="btn btn-primary" disabled={enviando}>
             {enviando ? "Publicando…" : "Publicar"}
           </button>
         </div>

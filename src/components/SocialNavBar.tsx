@@ -18,7 +18,7 @@ function SocialNavBar() {
   return (
     <Navbar expand="lg" className="navbar-estilos" variant="dark">
       <Container>
-        <Navbar.Brand as={Link} to="/" className="mx-auto mx-lg-0">UnaHur Anti-Social Net</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/" className="mx-auto mx-lg-0">UH Anti-Social Net</Navbar.Brand>
         {usuario && (
           <button
             type="button"
@@ -30,7 +30,7 @@ function SocialNavBar() {
           </button>
         )}
         <Navbar.Collapse id="social-navbar">
-          <Nav className="me-auto">
+          <Nav className="me-auto ms-lg-3">
             <Nav.Link as={NavLink} to="/" end>Inicio</Nav.Link>
             <Nav.Link as={NavLink} to="/publicaciones">Publicaciones</Nav.Link>
             <Nav.Link as={NavLink} to="/nosotros">Nosotros</Nav.Link>

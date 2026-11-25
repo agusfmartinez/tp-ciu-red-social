@@ -67,7 +67,7 @@ const Contacto = () => {
             </div>
           )}
 
-          <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} noValidate>
+          <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} noValidate className="formulario-contacto">
             <div className="mb-3">
               <label htmlFor="nombre" className="form-label"><b>Nombre</b></label>
               <input
