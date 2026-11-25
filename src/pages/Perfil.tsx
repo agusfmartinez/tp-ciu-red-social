@@ -46,7 +46,7 @@ function Perfil() {
   return (
     <section className="container py-5">
       <div className="card border-0 rounded-4 shadow-sm mb-4">
-        <div className="card-body p-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+        <div className="card-body p-4 d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
           <div>
             <p className="text-uppercase text-muted small mb-1">{esMiPerfil ? 'Mi perfil' : 'Perfil'}</p>
             <h1 className="h3 fw-bold mb-0">{nickName}</h1>

@@ -153,6 +153,14 @@ header.sticky-top {
   margin-top: 15px;
 }
 
+/* en mobile el logo va abajo del texto y más chico */
+@media (max-width: 767.98px) {
+  .logoInicio {
+    width: 160px;
+    margin-top: 0;
+  }
+}
+
 .imagenNosotros {
   width: 100%;
   height: 300px;

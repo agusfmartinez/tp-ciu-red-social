@@ -16,18 +16,23 @@ const Inicio = () => {
                 <div className="rounded-4 p-4 p-md-5 text-white shadow-sm d-flex align-items-start gap-4" style={{ background: 'linear-gradient(120deg, #134C4A, #1D7874)' }}>
                     <div>
                         <span className="badge rounded-pill text-bg-light mb-3">Comunidad UNAHUR</span>
-                        <h1 className="display-5 fw-bold">UnaHur Anti-Social Net</h1>
+                        <h1 className="display-5 fw-bold text-break">UnaHur Anti-Social Net</h1>
                         <p className="lead mb-4">
                             Un lugar para descubrir temas, compartir ideas y conectar con otras personas de la comunidad.
                         </p>
+                        {/* logo en mobile: arriba del botón */}
+                        <div className="text-center mb-4 d-md-none">
+                            <img src="/logRed.jpg" alt="Logo de UnaHur Anti-Social Net" className="img-fluid logoInicio" />
+                        </div>
                         <Link to="/publicaciones" className="btn btn-light rounded-pill px-4">
                             Explorar publicaciones
                         </Link>
                     </div>
+                    {/* logo en desktop: a la derecha */}
                     <img
                         src="/logRed.jpg"
                         alt="Logo de UnaHur Anti-Social Net"
-                        className="img-fluid logoInicio flex-shrink-0 ms-auto"
+                        className="img-fluid logoInicio flex-shrink-0 ms-auto d-none d-md-block"
                     />
                 </div>
             </section>
