@@ -66,7 +66,7 @@ function DetallePublicacion() {
   
   return (
     <section className="container py-5" style={{ maxWidth: 900 }}>
-      <Link to="/publicaciones" className="btn btn-link text-success text-decoration-none px-0 mb-3">← Volver a publicaciones</Link>
+      <Link to="/publicaciones" className="btn btn-link link-color text-decoration-none px-0 mb-3">← Volver a publicaciones</Link>
       <article className="card border-0 rounded-4 shadow-sm">
         <div className="card-body p-4 p-md-5">
           <header className="mb-4">
@@ -117,7 +117,7 @@ function DetallePublicacion() {
               </form>
             ) : (
               <p className="mt-4 mb-0 text-muted">
-                <Link to="/login" className="link-success">Iniciá sesión</Link> para comentar.
+                <Link to="/login" className="link-color text-decoration-underline">Iniciá sesión</Link> para comentar.
               </p>
             )}
 

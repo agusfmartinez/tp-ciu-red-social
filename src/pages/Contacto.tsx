@@ -69,7 +69,7 @@ const Contacto = () => {
 
           <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} noValidate>
             <div className="mb-3">
-              <label htmlFor="nombre" className="form-label">Nombre</label>
+              <label htmlFor="nombre" className="form-label"><b>Nombre</b></label>
               <input
                 id="nombre"
                 name="nombre"
@@ -82,7 +82,7 @@ const Contacto = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label"><b>Email</b></label>
               <input
                 id="email"
                 name="email"
@@ -95,7 +95,7 @@ const Contacto = () => {
             </div>
 
             <div className="mb-3">
-              <label htmlFor="mensaje" className="form-label">Mensaje</label>
+              <label htmlFor="mensaje" className="form-label"><b>Mensaje</b></label>
               <textarea
                 id="mensaje"
                 name="mensaje"
