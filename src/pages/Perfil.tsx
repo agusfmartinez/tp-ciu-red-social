@@ -34,14 +34,17 @@ function Perfil() {
 
   return (
     <section className="container py-5">
-      <div className="card border-0 rounded-4 shadow-sm mb-4">
+      <div className="card border-0 rounded-4 shadow-sm mx-auto" style={{ maxWidth: '32rem' }}>
         <div className="card-body p-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
           <div>
-            <p className="text-uppercase text-muted small mb-1">Mi perfil</p>
-            <h1 className="h3 fw-bold mb-0">{usuario.nickName}</h1>
-            <small className="text-muted">
+            <h1 className="h3 fw-bold mb-3">Mi perfil</h1>
+            <h1 className="h4 fw-bold mb-0">{usuario.nickName}</h1>
+            <p className="text-muted small mb-4">
               {cargando ? 'Cargando...' : `${posts.length} publicaciones`}
-            </small>
+            </p>
+            <Link to="/publicaciones" className="btn btn-primary rounded-pill">
+              Volver a publicaciones
+            </Link>
           </div>
         </div>
       </div>
