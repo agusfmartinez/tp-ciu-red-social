@@ -2,7 +2,7 @@
 import { Navigate, useNavigate } from 'react-router';
 import type { DatosToast } from '../hooks/toastHook';
 import { useAuth } from '../hooks/useAuth';
-import { crearPost } from '../services/postsService';
+import { crearPost, subirImagenes } from '../services/postsService';
 import { listarTags } from '../services/tagsService';
 import type { ControllerTag, CrearPostInput  } from '../types/controllers';
 
@@ -19,6 +19,7 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
   const [imagenes, setImagenes] = useState('');
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
+  const [archivos, setArchivos] = useState<File[]>([]);
 
   useEffect(() => {
     listarTags()
@@ -59,7 +60,23 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
     setError('');
     setEnviando(true);
     try {
-      await crearPost(datos);
+      const post = await crearPost(datos);
+      if (archivos.length > 0) {
+        try {
+          await subirImagenes(post.id, usuario.id, archivos);
+        } catch {
+          // post creado pero error al subir imagen
+          mostrarToast({
+            titulo: 'Publicación creada sin imágenes',
+            mensaje: 'No se pudieron subir los archivos.',
+            tipo: 'warning',
+            delay: 5000,
+          });
+          navigate('/post/' + post.id);
+          return;
+        }
+      }
+
       mostrarToast({
         titulo: 'Publicación creada',
         mensaje: 'Tu publicación ya está disponible para la comunidad.',
@@ -133,6 +150,41 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
               onChange={(event) => setImagenes(event.currentTarget.value)}
             />
             <div className="form-text">Pegá una URL pública por línea.</div>
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="archivos" className="form-label">Subir archivos de imágenes (opcional)</label>
+            <input
+              id="archivos"
+              type="file"
+              className="form-control"
+              accept="image/*"
+              multiple
+              onChange={(event) => 
+                {
+                  const nuevos = Array.from(event.currentTarget.files ?? []);
+                  setArchivos([...archivos, ...nuevos].slice(0, 10));
+                  event.currentTarget.value = '';
+                }
+              }
+            />
+            <div className="form-text">Hasta 10 imágenes, 5MB cada una.</div>
+            {archivos.length > 0 && (
+              <ul className="list-group mt-2">
+                {archivos.map((archivo, index) => (
+                  <li key={index} className="list-group-item d-flex justify-content-between align-items-center gap-2">
+                    <span className="text-truncate">{archivo.name}</span>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-danger"
+                      onClick={() => setArchivos(archivos.filter((_, i) => i !== index))}
+                    >
+                      Quitar
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <button type="submit" className="btn btn-dark" disabled={enviando}>
