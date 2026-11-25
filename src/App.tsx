@@ -12,6 +12,7 @@ import { useToast } from "./hooks/toastHook";
 import NuevaPublicacion from "./pages/NuevaPublicacion";
 import BottomNavBar from "./components/BottomNavBar";
 import DetallePublicacion from "./pages/DetallePublicacion";
+import Perfil from "./pages/Perfil";
 
 function App() {
   const { toast, mostrarToast, cerrarToast } = useToast();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/nueva-publicacion" element={<NuevaPublicacion mostrarToast={mostrarToast} />} />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
       </main>
       <Footer />
