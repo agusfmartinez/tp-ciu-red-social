@@ -18,3 +18,7 @@ export async function crearPost(datos: CrearPostInput) {
 
   return respuesta.post;
 }
+
+export function listarPostsDeUsuario(userId: string): Promise<ControllerPost[]> {
+  return request('/posts?userId=' + userId);
+}
