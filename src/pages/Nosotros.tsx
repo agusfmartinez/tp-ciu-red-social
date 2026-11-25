@@ -2,14 +2,14 @@
   return (
     <div className="container my-5">
       <div className="text-center mb-5">
-        <h1 className="fw-bold">Sobre la comunidad</h1>
-        <h3 className="text-primary">UnaHur Anti-Social Net</h3>
+        <h1 className="">Sobre la comunidad</h1>
+        <h3 className="textos-inicio-publi-destacadas">UnaHur Anti-Social Net</h3>
         <p className="lead">
           Un espacio para compartir ideas y conectar con otras personas de la UNAHUR.
         </p>
       </div>
 
-      <div className="row align-items-center">
+      <div className="row align-items-start">
         <div className="col-12 col-md-6">
           <h2>¿Qué es esta red?</h2>
           <p>
@@ -51,9 +51,21 @@
         </div>
       </div>
 
-      <div className="text-center mt-5 p-4 bg-light rounded">
-        <h3 className="text-primary">UnaHur Anti-Social Net</h3>
-        <p className="mb-0">Una comunidad para compartir lo que pasa en la UNAHUR.</p>
+      <div className="hero-inicio rounded-4 p-4 p-md-5 text-white shadow-sm d-flex align-items-center gap-4 mt-5">
+        <div>
+          <h3 className="fw-bold">UnaHur Anti-Social Net</h3>
+          <p className="mb-0">Una comunidad para compartir lo que pasa en la UNAHUR.</p>
+          {/* logo en mobile: abajo del texto */}
+          <div className="text-center mt-4 d-md-none">
+            <img src="/logRed.jpg" alt="Logo de UnaHur Anti-Social Net" className="img-fluid logoInicio" />
+          </div>
+        </div>
+        {/* logo en desktop: a la derecha */}
+        <img
+          src="/logRed.jpg"
+          alt="Logo de UnaHur Anti-Social Net"
+          className="img-fluid logoInicio flex-shrink-0 ms-auto d-none d-md-block"
+        />
       </div>
     </div>
   );
