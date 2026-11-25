@@ -12,13 +12,23 @@ function SocialNavBar() {
 
   function handleLogout() {
     logout();
-    navigate('');
+    navigate('/');
   }
 
   return (
     <Navbar expand="lg" className="navbar-estilos" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/" className="mx-auto mx-lg-0">UnaHur Anti-Social Net</Navbar.Brand>
+        {usuario && (
+          <button
+            type="button"
+            className="btn btn-link text-white d-lg-none position-absolute end-0 me-2 p-1"
+            onClick={handleLogout}
+            aria-label="Cerrar sesión"
+          >
+            <span className="material-symbols-outlined">logout</span>
+          </button>
+        )}
         <Navbar.Collapse id="social-navbar">
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/" end>Inicio</Nav.Link>
