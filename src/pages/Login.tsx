@@ -116,7 +116,7 @@ function Login() {
               </form>
 
               <p className="text-center small mt-4 mb-0">
-                ¿No tenés cuenta? <Link to="/registro" className="link-success">Registrate</Link>
+                ¿No tenés cuenta? <Link to="/registro" className="link-color">Registrate</Link>
               </p>
             </div>
           </div>

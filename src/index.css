@@ -4,7 +4,6 @@
 :root {
   --fuente-principal: 'Nunito', sans-serif;
   --fuente-titulos: 'Fredoka', sans-serif;
-
   --color-primario: #1f1f1f;
   --color-primario-oscuro: #6e5979ff;
   --color-acento: #bf9ed1;
@@ -13,6 +12,8 @@
   --color-tabla-borde: #637074;
   --color-tabla-hover: #a9c9ce;
   --color-card: #cfeee899;
+  --color-link: #1f1f1f;      
+  --color-link-hover: #6e5979ff;  
 }
 
 body {
@@ -127,6 +128,26 @@ header.sticky-top {
   background: linear-gradient(35deg in oklch, oklch(27.56% 0.0096 302.34) 0.0%, oklch(28.37% 0.0118 302.28) 2.6%, oklch(29.39% 0.0147 302.13) 5.1%, oklch(30.58% 0.0181 301.93) 7.7%, oklch(31.92% 0.0219 301.71) 10.3%, oklch(33.38% 0.0259 301.53) 12.8%, oklch(34.95% 0.0302 301.42) 15.4%, oklch(36.60% 0.0344 301.42) 17.9%, oklch(38.30% 0.0387 301.58) 20.5%, oklch(40.03% 0.0427 301.93) 23.1%, oklch(41.79% 0.0464 302.53) 25.6%, oklch(43.90% 0.0503 303.59) 28.2%, oklch(46.39% 0.0544 305.08) 30.8%, oklch(49.10% 0.0587 306.84) 33.3%, oklch(51.87% 0.0629 308.75) 35.9%, oklch(54.55% 0.0671 310.64) 38.5%, oklch(57.00% 0.0709 312.36) 41.0%, oklch(59.05% 0.0742 313.79) 43.6%, oklch(60.54% 0.0771 314.75) 46.2%, oklch(61.33% 0.0792 315.11) 48.7%, oklch(61.27% 0.0805 314.73) 51.3%, oklch(60.35% 0.0813 313.54) 53.8%, oklch(58.72% 0.0818 311.71) 56.4%, oklch(56.54% 0.0817 309.40) 59.0%, oklch(53.96% 0.0812 306.80) 61.5%, oklch(51.15% 0.0802 304.06) 64.1%, oklch(48.25% 0.0787 301.37) 66.7%, oklch(45.43% 0.0767 298.88) 69.2%, oklch(42.83% 0.0742 296.78) 71.8%, oklch(40.63% 0.0711 295.23) 74.4%, oklch(38.80% 0.0672 294.29) 76.9%, oklch(37.00% 0.0620 293.73) 79.5%, oklch(35.24% 0.0558 293.49) 82.1%, oklch(33.55% 0.0489 293.48) 84.6%, oklch(31.94% 0.0416 293.66) 87.2%, oklch(30.44% 0.0344 293.95) 89.7%, oklch(29.07% 0.0275 294.29) 92.3%, oklch(27.85% 0.0213 294.61) 94.9%, oklch(26.82% 0.0162 294.85) 97.4%, oklch(25.98% 0.0124 294.95) 100.0%) !important;
 } 
 
+.btn-light {
+  background-color: #fff !important;
+  border-color: #000000 !important;
+}
+
+.btn-light:hover {
+  background: linear-gradient(35deg in oklch, oklch(27.56% 0.0096 302.34) 0.0%, oklch(28.37% 0.0118 302.28) 2.6%, oklch(29.39% 0.0147 302.13) 5.1%, oklch(30.58% 0.0181 301.93) 7.7%, oklch(31.92% 0.0219 301.71) 10.3%, oklch(33.38% 0.0259 301.53) 12.8%, oklch(34.95% 0.0302 301.42) 15.4%, oklch(36.60% 0.0344 301.42) 17.9%, oklch(38.30% 0.0387 301.58) 20.5%, oklch(40.03% 0.0427 301.93) 23.1%, oklch(41.79% 0.0464 302.53) 25.6%, oklch(43.90% 0.0503 303.59) 28.2%, oklch(46.39% 0.0544 305.08) 30.8%, oklch(49.10% 0.0587 306.84) 33.3%, oklch(51.87% 0.0629 308.75) 35.9%, oklch(54.55% 0.0671 310.64) 38.5%, oklch(57.00% 0.0709 312.36) 41.0%, oklch(59.05% 0.0742 313.79) 43.6%, oklch(60.54% 0.0771 314.75) 46.2%, oklch(61.33% 0.0792 315.11) 48.7%, oklch(61.27% 0.0805 314.73) 51.3%, oklch(60.35% 0.0813 313.54) 53.8%, oklch(58.72% 0.0818 311.71) 56.4%, oklch(56.54% 0.0817 309.40) 59.0%, oklch(53.96% 0.0812 306.80) 61.5%, oklch(51.15% 0.0802 304.06) 64.1%, oklch(48.25% 0.0787 301.37) 66.7%, oklch(45.43% 0.0767 298.88) 69.2%, oklch(42.83% 0.0742 296.78) 71.8%, oklch(40.63% 0.0711 295.23) 74.4%, oklch(38.80% 0.0672 294.29) 76.9%, oklch(37.00% 0.0620 293.73) 79.5%, oklch(35.24% 0.0558 293.49) 82.1%, oklch(33.55% 0.0489 293.48) 84.6%, oklch(31.94% 0.0416 293.66) 87.2%, oklch(30.44% 0.0344 293.95) 89.7%, oklch(29.07% 0.0275 294.29) 92.3%, oklch(27.85% 0.0213 294.61) 94.9%, oklch(26.82% 0.0162 294.85) 97.4%, oklch(25.98% 0.0124 294.95) 100.0%) !important;
+  color: #000000;
+  border-color: #000000 !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-light:hover .texto-degradado {
+  background: linear-gradient(to right, #fff 10%, #000 80%, #fff 10%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .form-control:focus, 
 .form-select:focus {
   border-color: var(--color-primario);
@@ -219,9 +240,36 @@ header.sticky-top {
   padding: 1rem;
 }
 
+.textos-inicio-publi {
+  color: rgb(0, 0, 0);
+}
+
+.textos-inicio-publi-destacadas {
+  color: rgb(255, 255, 255);
+}
+
+.link-color {
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: bolder;
+  transition: color 0.2s ease;
+}
+
+.link-color:hover,
+.link-color:focus-visible {
+  color: var(--color-link-hover);
+}
+
 /* --- footer --- */
 footer {
   background-color: var(--color-primario);
   color: var(--color-texto-claro);
   padding-top: 2rem;
+}
+
+.footer-copyright {
+  text-align: right;
+  font-weight: bold;
+  /* coincide con el padding-x de .nav-link para alinear con "Registrarse" */
+  margin-right: 1rem;
 }

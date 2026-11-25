@@ -25,7 +25,7 @@ const Inicio = () => {
                             <img src="/logRed.jpg" alt="Logo de UnaHur Anti-Social Net" className="img-fluid logoInicio" />
                         </div>
                         <Link to="/publicaciones" className="btn btn-light rounded-pill px-4">
-                            Explorar publicaciones
+                            <span className="texto-degradado">Explorar publicaciones</span>
                         </Link>
                     </div>
                     {/* logo en desktop: a la derecha */}
@@ -40,10 +40,9 @@ const Inicio = () => {
             <section className="container py-5">
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
-                    <p className="text-uppercase text-muted small mb-1">Explorá</p>
-                    <h2 className="h3 mb-0">Publicaciones de la comunidad</h2>
+                    <p className="textos-inicio-subtitulos">EXPLORÁ</p>
+                    <h3 className="textos-inicio-titulos">Publicaciones de la comunidad</h3>
                     </div>
-                    <Link to="/publicaciones" className="link-success">Ver todas las publicaciones</Link>
                 </div>
 
                 {cargando && <p className="text-muted">Cargando publicaciones...</p>}
@@ -61,16 +60,15 @@ const Inicio = () => {
             <section className="container pb-5">
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
-                        <p className="text-uppercase text-white small mb-1">Para vos</p>
-                        <h2 className="h3 mb-0 text-white">Publicaciones Destacadas</h2>
+                        <p className="textos-inicio-publi-destacadas">PARA VOS</p>
+                        <h3 className="mb-0 textos-inicio-publi-destacadas">Publicaciones Destacadas</h3>
                     </div>
-                    <Link to="/publicaciones" className="link-success">Ver todas las publicaciones</Link>
                 </div>
     
             </section>
 
             <section className="container pb-5">
-                <div className="hero-inicio text-white rounded-4  p-4 p-md-5">
+                <div className="hero-inicio textos-inicio-publi-destacadas rounded-4  p-4 p-md-5">
                     <div className="row align-items-center g-4">
                         <div className="col-12 col-md-8">
                             <p className="text-uppercase small mb-1">Una comunidad para compartir</p>
