@@ -25,7 +25,7 @@ const Inicio = () => {
                             <img src="/logRed.jpg" alt="Logo de UnaHur Anti-Social Net" className="img-fluid logoInicio" />
                         </div>
                         <Link to="/publicaciones" className="btn btn-light rounded-pill px-4">
-                            <span className="texto-degradado">Explorar publicaciones</span>
+                            <span>Explorar publicaciones</span>
                         </Link>
                     </div>
                     {/* logo en desktop: a la derecha */}
