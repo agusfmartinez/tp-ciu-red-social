@@ -61,7 +61,7 @@ const Registro = () => {
               </form>
 
               <p className="text-center small mt-4 mb-0">
-                ¿Ya tenés cuenta? <Link to="/login" className="link-success">Iniciá sesión</Link>
+                ¿Ya tenés cuenta? <Link to="/login" className="link-color">Iniciá sesión</Link>
               </p>
             </div>
           </div>

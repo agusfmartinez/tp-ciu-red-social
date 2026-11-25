@@ -41,7 +41,7 @@ const Inicio = () => {
             <section className="container py-5">
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
-                    <p className="textos-inicio-subtitulos">EXPLORÁ</p>
+                    <p className="textos-inicio-subtitulos"><b>EXPLORÁ</b></p>
                     <h3 className="textos-inicio-titulos">Publicaciones de la comunidad</h3>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ const Inicio = () => {
                 <div className="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
                     <div>
                         <p className="textos-inicio-publi-destacadas">PARA VOS</p>
-                        <h3 className="mb-0 textos-inicio-publi-destacadas">Publicaciones Destacadas</h3>
+                        <h3 className="mb-0 textos-inicio-publi-destacadas"><b>Publicaciones Destacadas</b></h3>
                     </div>
                 </div>
                 <div className="row g-4">

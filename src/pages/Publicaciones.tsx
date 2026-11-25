@@ -40,14 +40,14 @@ function Publicaciones() {
   return (   
     <section className="container py-4 py-md-5">
       <div className="mb-3 mb-md-4">
-        <p className="text-uppercase text-muted small mb-1">Feed de la comunidad</p>
+        <p className="text-uppercase small mb-1"><b>FEED DE LA COMUNIDAD</b></p>
         <h1 className="display-6 fw-bold">Publicaciones</h1>
-        <p className="text-muted d-none d-md-block">Explorá publicaciones y conversaciones de la UNAHUR.</p>
+        <p className="text-uppercase small d-none d-md-block "><b>Explorá publicaciones y conversaciones de la UNAHUR.</b></p>
       </div>
 
       <div className="row g-2 g-md-3 mb-4">
         <div className="col-12 col-md-6">
-          <label className="form-label d-none d-md-block" htmlFor="buscar-publicaciones">Buscar publicaciones</label>
+          <label className="form-label d-none d-md-block" htmlFor="buscar-publicaciones"><b>Buscar publicaciones</b></label>
           <input
             id="buscar-publicaciones"
             type="search"
