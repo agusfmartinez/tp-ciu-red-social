@@ -6,7 +6,11 @@ export async function request(path: string, options: RequestInit = {}) {
     headers: { 'Content-Type': 'application/json', ...options.headers },
   });
 
-  const data = await response.json().catch(() => ({}));
+  const data = await response.json().catch(() => null);
+
+  if (data === null) {
+    throw new Error('No se pudo conectar con la API. Revisá VITE_API_URL y que el backend esté levantado.');
+  }
 
   if (!response.ok) {
     throw new Error(data.message ?? 'Error en la API');
