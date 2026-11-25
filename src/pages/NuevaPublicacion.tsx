@@ -21,7 +21,9 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
     string[]
   >([]);
   const [tagEscrito, setTagEscrito] = useState("");
-  const [imagenes, setImagenes] = useState("");
+  const [urls, setUrls] = useState<string[]>([]);
+  const [urlEscrita, setUrlEscrita] = useState('');
+  const [errorUrl, setErrorUrl] = useState('');
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState("");
   const [archivos, setArchivos] = useState<File[]>([]);
@@ -56,17 +58,13 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
       return;
     }
 
-    const urlsImagenes = imagenes
-      .split("\n")
-      .map((url) => url.trim())
-      .filter((url) => url !== "");
     const datos: CrearPostInput = {
       descripcion: textoDescripcion,
       userId: usuario.id,
       tags: etiquetasSeleccionadas,
     };
-    if (urlsImagenes.length > 0) {
-      datos.images = urlsImagenes;
+    if (urls.length > 0) {
+      datos.images = urls;
     }
 
     setError("");
@@ -118,6 +116,25 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
     if (etiquetasSeleccionadas.length >= 10) return;
     setEtiquetasSeleccionadas([...etiquetasSeleccionadas, tag]);
     setTagEscrito('');
+  }
+
+  function agregarUrl() {
+    const url = urlEscrita.trim();
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      setErrorUrl('La URL tiene que empezar con http:// o https://');
+      return;
+    }
+    if (urls.includes(url)) {
+      setErrorUrl('Esa imagen ya está agregada.');
+      return;
+    }
+    if (urls.length + archivos.length >= 10) {
+      setErrorUrl('Máximo 10 imágenes en total.');
+      return;
+    }
+    setUrls([...urls, url]);
+    setUrlEscrita('');
+    setErrorUrl('');
   }
 
   if (!usuario) {
@@ -251,20 +268,52 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
             </div>
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="imagenes" className="form-label">
-              Imágenes (opcional)
-            </label>
-            <textarea
-              id="imagenes"
-              name="imagenes"
-              className="form-control"
-              rows={2}
-              placeholder="Pegá una URL por línea"
-              value={imagenes}
-              onChange={(event) => setImagenes(event.currentTarget.value)}
-            />
-            <div className="form-text">Pegá una URL pública por línea.</div>
+          <div className="mb-3">
+            <label htmlFor="url-imagen" className="form-label">Imágenes por URL (opcional)</label>
+            <div className="d-flex gap-2">
+              <input
+                id="url-imagen"
+                type="url"
+                className={'form-control' + (errorUrl ? ' is-invalid' : '')}
+                placeholder="https://..."
+                value={urlEscrita}
+                onChange={(event) => {
+                  setUrlEscrita(event.currentTarget.value);
+                  setErrorUrl('');
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    event.preventDefault();
+                    agregarUrl();
+                  }
+                }}
+              />
+              <button type="button" className="btn btn-outline-secondary" onClick={agregarUrl}>Agregar</button>
+            </div>
+            {errorUrl && <div className="invalid-feedback d-block">{errorUrl}</div>}
+
+            {urls.length > 0 && (
+              <div className="d-flex flex-wrap gap-2 mt-2">
+                {urls.map((url) => (
+                  <div key={url} className="position-relative">
+                    <img
+                      src={url}
+                      alt="Vista previa"
+                      className="rounded-3 border"
+                      style={{ width: 90, height: 90, objectFit: 'cover' }}
+                      onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+                    />
+                    <button
+                      type="button"
+                      className="btn-close bg-white rounded-circle position-absolute top-0 end-0 m-1"
+                      style={{ fontSize: '0.6rem' }}
+                      aria-label="Quitar imagen"
+                      onClick={() => setUrls(urls.filter((u) => u !== url))}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -279,31 +328,31 @@ function NuevaPublicacion({ mostrarToast }: NuevaPublicacionProps) {
               multiple
               onChange={(event) => {
                 const nuevos = Array.from(event.currentTarget.files ?? []);
-                setArchivos([...archivos, ...nuevos].slice(0, 10));
+                setArchivos([...archivos, ...nuevos].slice(0, 10 - urls.length));
                 event.currentTarget.value = "";
               }}
             />
             <div className="form-text">Hasta 10 imágenes, 5MB cada una.</div>
             {archivos.length > 0 && (
-              <ul className="list-group mt-2">
+              <div className="d-flex flex-wrap gap-2 mt-2">
                 {archivos.map((archivo, index) => (
-                  <li
-                    key={index}
-                    className="list-group-item d-flex justify-content-between align-items-center gap-2"
-                  >
-                    <span className="text-truncate">{archivo.name}</span>
+                  <div key={index} className="position-relative">
+                    <img
+                      src={URL.createObjectURL(archivo)}
+                      alt={archivo.name}
+                      className="rounded-3 border"
+                      style={{ width: 90, height: 90, objectFit: 'cover' }}
+                    />
                     <button
                       type="button"
-                      className="btn btn-sm btn-outline-danger"
-                      onClick={() =>
-                        setArchivos(archivos.filter((_, i) => i !== index))
-                      }
-                    >
-                      Quitar
-                    </button>
-                  </li>
+                      className="btn-close bg-white rounded-circle position-absolute top-0 end-0 m-1"
+                      style={{ fontSize: '0.6rem' }}
+                      aria-label={'Quitar ' + archivo.name}
+                      onClick={() => setArchivos(archivos.filter((_, i) => i !== index))}
+                    />
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </div>
 
