@@ -4,6 +4,8 @@ Red social desarrollada con **React + TypeScript** como trabajo práctico de la 
 
 La aplicación permite navegar publicaciones, ver su detalle con comentarios, registrarse, iniciar sesión, comentar y crear publicaciones propias con etiquetas e imágenes.
 
+🌐 **Demo:** https://tp-ciu-red-social.vercel.app/
+
 ## 👥 Integrantes
 
 | Nombre | GitHub | Email |
@@ -25,7 +27,10 @@ La aplicación permite navegar publicaciones, ver su detalle con comentarios, re
 Usamos **nuestro propio BackEnd** de la materia Estrategias de Persistencia (Node.js + Express + MongoDB):
 
 - Repositorio: https://gitea.unahur.edu.ar/Estrategia-de-persistencia-C2-2026/trabajo-practico-2-pedidossimulator
+- API deployada (Render): https://tp-ciu-red-social-backend.onrender.com
 - URL local: `http://localhost:4000`
+
+> El backend está en el plan gratuito de Render: si no se usó en un rato, la primera carga puede tardar entre 30 y 60 segundos mientras el servidor se reactiva.
 
 > **Diferencia con la consigna:** en nuestro backend las imágenes por URL se envían dentro del mismo `POST /posts` (campo `images`), en lugar de un `POST /postimages` por cada una. Además se pueden subir archivos de imagen con `POST /posts/:id/images/upload`.
 
