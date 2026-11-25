@@ -5,9 +5,9 @@
   --fuente-principal: 'Nunito', sans-serif;
   --fuente-titulos: 'Fredoka', sans-serif;
 
-  --color-primario: #1D7874;
-  --color-primario-oscuro: #134C4A;
-  --color-acento: #F4C095;
+  --color-primario: #1f1f1f;
+  --color-primario-oscuro: #6e5979ff;
+  --color-acento: #bf9ed1;
   --color-texto-claro: #fff;
   --color-tabla-texto: #5c1a1a;
   --color-tabla-borde: #637074;
@@ -16,7 +16,7 @@
 }
 
 body {
-  background: linear-gradient(180deg in oklch, oklch(91.73% 0.0069 217.97) 0.0%, oklch(91.68% 0.0053 216.85) 25.0%, oklch(90.94% 0.0041 215.85) 50.0%, oklch(88.14% 0.0060 216.25) 75.0%, oklch(85.43% 0.0083 216.91) 100.0%);
+  background: linear-gradient(35deg in oklch, oklch(7.87% 0.0096 302.34) 0.0%, oklch(8.55% 0.0118 302.28) 2.6%, oklch(9.20% 0.0147 302.13) 5.1%, oklch(9.89% 0.0181 301.93) 7.7%, oklch(10.70% 0.0219 301.71) 10.3%, oklch(11.73% 0.0259 301.53) 12.8%, oklch(13.06% 0.0302 301.42) 15.4%, oklch(14.75% 0.0344 301.42) 17.9%, oklch(16.91% 0.0387 301.58) 20.5%, oklch(19.62% 0.0427 301.93) 23.1%, oklch(22.98% 0.0464 302.53) 25.6%, oklch(27.71% 0.0503 303.59) 28.2%, oklch(33.75% 0.0544 305.08) 30.8%, oklch(40.64% 0.0587 306.84) 33.3%, oklch(47.95% 0.0629 308.75) 35.9%, oklch(55.24% 0.0671 310.64) 38.5%, oklch(62.06% 0.0709 312.36) 41.0%, oklch(67.99% 0.0742 313.79) 43.6%, oklch(72.58% 0.0771 314.75) 46.2%, oklch(75.39% 0.0792 315.11) 48.7%, oklch(76.02% 0.0805 314.73) 51.3%, oklch(74.61% 0.0813 313.54) 53.8%, oklch(71.55% 0.0818 311.71) 56.4%, oklch(67.20% 0.0817 309.40) 59.0%, oklch(61.93% 0.0812 306.80) 61.5%, oklch(56.11% 0.0802 304.06) 64.1%, oklch(50.12% 0.0787 301.37) 66.7%, oklch(44.31% 0.0767 298.88) 69.2%, oklch(39.06% 0.0742 296.78) 71.8%, oklch(34.75% 0.0711 295.23) 74.4%, oklch(31.35% 0.0672 294.29) 76.9%, oklch(28.14% 0.0620 293.73) 79.5%, oklch(25.08% 0.0558 293.49) 82.1%, oklch(22.21% 0.0489 293.48) 84.6%, oklch(19.54% 0.0416 293.66) 87.2%, oklch(17.08% 0.0344 293.95) 89.7%, oklch(14.87% 0.0275 294.29) 92.3%, oklch(12.91% 0.0213 294.61) 94.9%, oklch(11.23% 0.0162 294.85) 97.4%, oklch(9.84% 0.0124 294.95) 100.0%);
   font-family: var(--fuente-principal);
 }
 
@@ -53,14 +53,13 @@ header.sticky-top {
   --bs-nav-link-hover-color: var(--color-acento);
 }
 
+.hero-inicio {
+  background: linear-gradient(305deg, oklch(9.06% 0.0096 127.97) 0.000% 2.500%, oklch(9.26% 0.0104 127.97) 2.500% 5.000%, oklch(9.23% 0.0112 127.97) 5.000% 7.500%, oklch(9.11% 0.0121 127.97) 7.500% 10.000%, oklch(9.03% 0.0131 127.97) 10.000% 12.500%, oklch(9.13% 0.0143 127.97) 12.500% 15.000%, oklch(9.54% 0.0158 127.97) 15.000% 17.500%, oklch(10.39% 0.0176 127.97) 17.500% 20.000%, oklch(11.83% 0.0198 127.97) 20.000% 22.500%, oklch(13.98% 0.0225 127.97) 22.500% 25.000%, oklch(17.01% 0.0257 127.97) 25.000% 27.500%, oklch(21.68% 0.0301 127.89) 27.500% 30.000%, oklch(27.86% 0.0356 127.73) 30.000% 32.500%, oklch(35.05% 0.0419 127.54) 32.500% 35.000%, oklch(42.76% 0.0485 127.35) 35.000% 37.500%, oklch(50.48% 0.0552 127.19) 37.500% 40.000%, oklch(57.72% 0.0614 127.11) 40.000% 42.500%, oklch(63.97% 0.0668 127.14) 42.500% 45.000%, oklch(68.75% 0.0711 127.33) 45.000% 47.500%, oklch(71.55% 0.0738 127.70) 47.500% 50.000%, oklch(71.91% 0.0746 128.31) 50.000% 52.500%, oklch(69.92% 0.0737 129.23) 52.500% 55.000%, oklch(66.04% 0.0715 130.41) 55.000% 57.500%, oklch(60.72% 0.0681 131.76) 57.500% 60.000%, oklch(54.40% 0.0640 133.22) 60.000% 62.500%, oklch(47.54% 0.0593 134.71) 62.500% 65.000%, oklch(40.59% 0.0544 136.15) 65.000% 67.500%, oklch(34.01% 0.0494 137.47) 67.500% 70.000%, oklch(28.23% 0.0448 138.59) 70.000% 72.500%, oklch(23.71% 0.0408 139.43) 72.500% 75.000%, oklch(20.52% 0.0373 139.97) 75.000% 77.500%, oklch(17.88% 0.0337 140.30) 77.500% 80.000%, oklch(15.70% 0.0299 140.44) 80.000% 82.500%, oklch(13.91% 0.0261 140.44) 82.500% 85.000%, oklch(12.44% 0.0224 140.34) 85.000% 87.500%, oklch(11.24% 0.0189 140.17) 87.500% 90.000%, oklch(10.25% 0.0156 139.97) 90.000% 92.500%, oklch(9.40% 0.0127 139.79) 92.500% 95.000%, oklch(8.63% 0.0102 139.65) 95.000% 97.500%, oklch(7.87% 0.0083 139.59) 97.500% 100.000%);
+}
+
 .navbar .nav-link.active {
   font-weight: 700;
   color: var(--color-texto-claro);
-}
-
-.badge-carrito {
-  color: black !important;
-  background-color: var(--color-acento) !important;
 }
 
 /* --- navbar inferior (mobile) --- */
@@ -118,18 +117,20 @@ header.sticky-top {
 /* --- botones y formularios --- */
 .btn-primary {
   background-color: var(--color-primario) !important;
-  border-color: var(--color-primario) !important;
+  border-color: #000000 !important;
   transition: 0.5s;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primario-oscuro) !important;
+  color: #070707 !important;
+  font-weight: bold;
+  background: linear-gradient(35deg in oklch, oklch(27.56% 0.0096 302.34) 0.0%, oklch(28.37% 0.0118 302.28) 2.6%, oklch(29.39% 0.0147 302.13) 5.1%, oklch(30.58% 0.0181 301.93) 7.7%, oklch(31.92% 0.0219 301.71) 10.3%, oklch(33.38% 0.0259 301.53) 12.8%, oklch(34.95% 0.0302 301.42) 15.4%, oklch(36.60% 0.0344 301.42) 17.9%, oklch(38.30% 0.0387 301.58) 20.5%, oklch(40.03% 0.0427 301.93) 23.1%, oklch(41.79% 0.0464 302.53) 25.6%, oklch(43.90% 0.0503 303.59) 28.2%, oklch(46.39% 0.0544 305.08) 30.8%, oklch(49.10% 0.0587 306.84) 33.3%, oklch(51.87% 0.0629 308.75) 35.9%, oklch(54.55% 0.0671 310.64) 38.5%, oklch(57.00% 0.0709 312.36) 41.0%, oklch(59.05% 0.0742 313.79) 43.6%, oklch(60.54% 0.0771 314.75) 46.2%, oklch(61.33% 0.0792 315.11) 48.7%, oklch(61.27% 0.0805 314.73) 51.3%, oklch(60.35% 0.0813 313.54) 53.8%, oklch(58.72% 0.0818 311.71) 56.4%, oklch(56.54% 0.0817 309.40) 59.0%, oklch(53.96% 0.0812 306.80) 61.5%, oklch(51.15% 0.0802 304.06) 64.1%, oklch(48.25% 0.0787 301.37) 66.7%, oklch(45.43% 0.0767 298.88) 69.2%, oklch(42.83% 0.0742 296.78) 71.8%, oklch(40.63% 0.0711 295.23) 74.4%, oklch(38.80% 0.0672 294.29) 76.9%, oklch(37.00% 0.0620 293.73) 79.5%, oklch(35.24% 0.0558 293.49) 82.1%, oklch(33.55% 0.0489 293.48) 84.6%, oklch(31.94% 0.0416 293.66) 87.2%, oklch(30.44% 0.0344 293.95) 89.7%, oklch(29.07% 0.0275 294.29) 92.3%, oklch(27.85% 0.0213 294.61) 94.9%, oklch(26.82% 0.0162 294.85) 97.4%, oklch(25.98% 0.0124 294.95) 100.0%) !important;
 } 
 
 .form-control:focus, 
 .form-select:focus {
   border-color: var(--color-primario);
-  box-shadow: 0 0 0 .25rem rgba(29, 120, 116, .25);
+  box-shadow: 0 0 0 .25rem #3d126ead;
 }
 
 /* --- inicio --- */
@@ -204,42 +205,6 @@ header.sticky-top {
   margin-bottom: 1px;
 }
 
-/* --- carrito --- */
-.contenedor-tabla-carrito {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  border: 1px solid var(--bs-border-color);
-}
-
-#tabla-carrito {
-  --bs-table-bg: transparent;
-  --bs-table-color: var(--color-tabla-texto);
-  --bs-table-border-color: var(--color-tabla-borde);
-  --bs-table-hover-bg: var(--color-tabla-hover);
-  margin-bottom: 0;
-}
-
-#tabla-carrito th,
-#tabla-carrito td {
-  border-bottom: none;
-}
-
-#tabla-carrito th {
-  font-size: 1.2rem;
-}
-
-.tabla-carrito-totales {
-  margin-top: 1rem;
-}
-
-.botones-carrito {
-  display: flex;
-  margin-top: 20px;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-}
-
 /* --- toast --- */
 .toast-carrito {
   margin-top: 8.5rem;
@@ -248,7 +213,7 @@ header.sticky-top {
 
 /* --- footer --- */
 footer {
-  background-color: var(--color-primario-oscuro);
+  background-color: var(--color-primario);
   color: var(--color-texto-claro);
   padding-top: 2rem;
 }

@@ -48,7 +48,7 @@ function PostCard({ id, author, authorId, description, tags, images, visibleComm
           <small className="text-muted">
             {visibleCommentsCount} {visibleCommentsCount === 1 ? 'comentario visible' : 'comentarios visibles'}
           </small>
-          <Link to={`/post/${id}`} className="btn btn-outline-success btn-sm rounded-pill px-3">
+          <Link to={`/post/${id}`} className="btn btn-primary btn-sm rounded-pill px-3">
             Ver más
           </Link>
         </div>

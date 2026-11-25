@@ -110,7 +110,7 @@ function DetallePublicacion() {
                 <div className="invalid-feedback">{errorComentario}</div>
                 <div className="d-flex justify-content-between align-items-center mt-2">
                   <small className="text-muted">{comentario.length}/200</small>
-                  <button type="submit" className="btn btn-success rounded-pill px-4" disabled={enviando}>
+                  <button type="submit" className="btn btn-primary rounded-pill px-4" disabled={enviando}>
                     {enviando ? 'Enviando...' : 'Comentar'}
                   </button>
                 </div>
