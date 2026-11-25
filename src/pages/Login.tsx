@@ -2,29 +2,39 @@
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 
+type ErrorCampo = { mensaje?: string } | null;
+
+type ErroresLogin = {
+  nickName: ErrorCampo;
+  password: ErrorCampo;
+};
+
+const SIN_ERRORES: ErroresLogin = { nickName: null, password: null };
+const SOLO_ROJO: ErrorCampo = {};
+
+
 function Login() {
   const [nickName, setNickName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [credencialesIncorrectas, setCredencialesIncorrectas] = useState(false);
+  const [errores, setErrores] = useState<ErroresLogin>(SIN_ERRORES);
   const [cargando, setCargando] = useState(false);
   const { ingresar } = useAuth();
   const navigate = useNavigate();
 
-  function limpiarError() {
-    setError("");
-    setCredencialesIncorrectas(false);
+  function limpiarErrores() {
+    setErrores(SIN_ERRORES);
   }
 
   async function handleSubmit() {
-    limpiarError();
+    limpiarErrores();
 
-    if (!nickName.trim()) {
-      setError("Ingresá tu nombre de usuario.");
-      return;
-    }
-    if (!password) {
-      setError("Ingresá tu contraseña.");
+    const erroresValidacion: ErroresLogin = {
+      nickName: nickName.trim() ? null : { mensaje: "Debes ingresar el usuario." },
+      password: password ? null : { mensaje: "Debes ingresar la contraseña." },
+    };
+
+    if (erroresValidacion.nickName || erroresValidacion.password) {
+      setErrores(erroresValidacion);
       return;
     }
 
@@ -37,11 +47,16 @@ function Login() {
       if (mensaje === "Credenciales incorrectas.") {
         setNickName("");
         setPassword("");
-        setError("Credenciales incorrectas.");
-        setCredencialesIncorrectas(true);
+        setErrores({
+          nickName: SOLO_ROJO,
+          password: { mensaje: "Credenciales incorrectas" },
+        });
         return;
       }
-      setError(mensaje);
+      setErrores({
+        nickName: { mensaje },
+        password: { mensaje },
+      });
     } finally {
         setCargando(false);
     }
@@ -61,18 +76,18 @@ function Login() {
                   <input
                     type="text"
                     id="nickName"
-                    className={`form-control ${error ? "is-invalid" : ""}`}
+                    className={`form-control ${errores.nickName ? "is-invalid" : ""}`}
                     placeholder="Tu nombre de usuario"
                     value={nickName}
                     onChange={(event) => {
                       setNickName(event.target.value);
-                      limpiarError();
+                      limpiarErrores();
                     }}
                     autoComplete="username"
                     maxLength={50}
                   />
-                  {error && !credencialesIncorrectas && (
-                    <div className="invalid-feedback">{error}</div>
+                  {errores.nickName && errores.nickName.mensaje && (
+                    <div className="invalid-feedback">{errores.nickName.mensaje}</div>
                   )}
                 </div>
 
@@ -81,16 +96,18 @@ function Login() {
                   <input
                     type="password"
                     id="password"
-                    className={`form-control ${error ? "is-invalid" : ""}`}
+                    className={`form-control ${errores.password ? "is-invalid" : ""}`}
                     placeholder="Contraseña"
                     value={password}
                     onChange={(event) => {
                       setPassword(event.target.value);
-                      limpiarError();
+                      limpiarErrores();
                     }}
                     autoComplete="current-password"
                   />
-                  {error && <div className="invalid-feedback">{error}</div>}
+                  {errores.password && errores.password.mensaje && (
+                    <div className="invalid-feedback">{errores.password.mensaje}</div>
+                  )}
                 </div>
 
                 <button type="submit" className="btn btn-primary w-100 rounded-pill" disabled={cargando}>
