@@ -37,15 +37,15 @@
         <h2>¿Qué podés hacer?</h2>
         <div className="row mt-4">
           <div className="col-12 col-md-4 mb-3">
-            <h4>✍️ Compartir</h4>
+            <h4>Compartir</h4>
             <p>Publicá tus ideas para que otras personas puedan leerlas.</p>
           </div>
           <div className="col-12 col-md-4 mb-3">
-            <h4>💬 Conversar</h4>
+            <h4>Conversar</h4>
             <p>Comentá las publicaciones y participá de la charla.</p>
           </div>
           <div className="col-12 col-md-4 mb-3">
-            <h4>🏷️ Descubrir</h4>
+            <h4>Descubrir</h4>
             <p>Explorá publicaciones usando sus etiquetas e imágenes.</p>
           </div>
         </div>

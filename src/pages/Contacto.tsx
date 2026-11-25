@@ -55,9 +55,9 @@ const Contacto = () => {
         <div className="col-12 col-md-5">
           <h2>Contacto</h2>
           <p>¿Tenés alguna consulta? Escribinos y te respondemos a la brevedad.</p>
-          <p><strong>Email:</strong> info@eldoggystyle.com</p>
+          <p><strong>Email:</strong> contacto@unahurantisocial.net</p>
           <p><strong>Teléfono:</strong> 123-456-7890</p>
-          <p><strong>Horario:</strong> Lunes a viernes de 9 a 18 hs.</p>
+          <p>Podes contactarnos por consultas sobre publicaciones, comentarios o el uso de la plataforma.</p>
         </div>
 
         <div className="col-12 col-md-7">
